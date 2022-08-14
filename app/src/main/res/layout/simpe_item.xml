@@ -14,8 +14,8 @@
             android:autoSizeTextType="uniform"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
-            android:height=""
-            android:layout_height=""
+            android:height="11dp"
+            android:layout_height="11dp"
     </LinearLayout>
 
 
