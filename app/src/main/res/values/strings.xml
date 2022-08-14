@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OldPhoneToolBox</string>
+    <string name="battery_hint">剩余电量:</string>
+    <string name="app_settings">应用设置</string>
+</resources>
