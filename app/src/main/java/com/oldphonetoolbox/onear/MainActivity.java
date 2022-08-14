@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
-import com.oldphonetoolbox.onear.socket.SocketCoreController;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //设置应用横屏并全屏显示
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -35,11 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         batteryValue = findViewById(R.id.battery_remain);
         findViewById(R.id.btn_setting).setOnClickListener(this);
-        //开辟一个新线程
-        new Thread(()->{
-            new SocketCoreController().starter(this);
-        }).start();
-
     }
 
     @Override

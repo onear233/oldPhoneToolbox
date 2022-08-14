@@ -1,6 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+<<<<<<< HEAD
+    <style name="Theme.旧机工具箱" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+=======
     <style name="Theme.OldPhoneToolBox" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+>>>>>>> f77aa8e (功能改进)
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

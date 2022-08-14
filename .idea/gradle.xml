@@ -4,7 +4,10 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+<<<<<<< HEAD
+=======
         <option name="testRunner" value="GRADLE" />
+>>>>>>> f77aa8e (功能改进)
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -13,7 +16,10 @@
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
+<<<<<<< HEAD
+=======
         <option name="resolveModulePerSourceSet" value="false" />
+>>>>>>> f77aa8e (功能改进)
       </GradleProjectSettings>
     </option>
   </component>
