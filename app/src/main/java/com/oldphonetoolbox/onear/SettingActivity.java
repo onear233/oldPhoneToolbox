@@ -32,5 +32,6 @@ public class SettingActivity extends AppCompatActivity {
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,list,R.layout.simple_list_item,new String[]{"tittle","desc"},new int[]{R.id.setting_item_tittle,R.id.setting_item_desc});
         ListView lv_settings = findViewById(R.id.lv_settings);
         lv_settings.setAdapter(simpleAdapter);
+        //dsahfashfa
     }
 }
