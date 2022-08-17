@@ -14,6 +14,7 @@
         <entry key="..\:/Users/One-AR/OneDrive/桌面/OldPhoneToolBox/app/src/main/res/layout/simpe_item.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/One-AR/OneDrive/桌面/OldPhoneToolBox/app/src/main/res/layout/simple_adapter.xml" value="0.3183876811594203" />
         <entry key="..\:/Users/One-AR/OneDrive/桌面/OldPhoneToolBox/app/src/main/res/layout/simple_list_item.xml" value="0.3183876811594203" />
+        <entry key="..\:/workplace/android/OldPhoneToolBox/app/src/main/res/layout/activity_main.xml" value="0.17844202898550723" />
         <entry key="..\:/workplace/android/OldPhoneToolBox/app/src/main/res/layout/simpe_item.xml" value="0.12335359675785208" />
         <entry key="..\:/workplace/android/OldPhoneToolBox/app/src/main/res/layout/simple_adapter.xml" value="0.25364583333333335" />
         <entry key="..\:/workplace/android/OldPhoneToolBox/app/src/main/res/layout/simple_list_item.xml" value="0.25364583333333335" />
@@ -21,7 +22,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

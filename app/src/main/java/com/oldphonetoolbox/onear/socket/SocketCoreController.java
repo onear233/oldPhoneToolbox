@@ -49,7 +49,7 @@ public class SocketCoreController {
             byte[] array = getMetaDataBytes(metaData);
             //获取携带数据长度
             ByteBuffer byteBuffer = ByteBuffer.allocate(array[0] << 8 | array[1]);
-            Optional.ofNullable(OPTBHandlerCache.getHandler(array[2])).orElse(new OPTBErrorHandler()).execute(getMetaDataBytes(byteBuffer),activity);
+            OPTBHandlerCache.getHandler(array[2]).execute(getMetaDataBytes(byteBuffer),activity);
         }
     }
     private byte[] getMetaDataBytes(ByteBuffer byteBuffer){
