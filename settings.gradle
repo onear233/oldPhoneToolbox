@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -7,20 +5,12 @@ pluginManagement {
         mavenCentral()
     }
 }
->>>>>>> f77aa8e (功能改进)
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-<<<<<<< HEAD
-        jcenter() // Warning: this repository is going to shut down soon
-    }
-}
-rootProject.name = "旧机工具箱"
-=======
     }
 }
 rootProject.name = "OldPhoneToolBox"
->>>>>>> f77aa8e (功能改进)
 include ':app'
