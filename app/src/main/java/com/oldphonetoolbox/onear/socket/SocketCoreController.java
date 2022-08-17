@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi;
 
 import com.oldphonetoolbox.onear.*;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
-import com.oldphonetoolbox.onear.handler.OPTBHandlerChache;
+import com.oldphonetoolbox.onear.handler.OPTBHandlerCache;
 import com.oldphonetoolbox.onear.handler.error.OPTBErrorHandler;
 import com.oldphonetoolbox.onear.socket.tool.IpAddress;
 
@@ -49,7 +49,7 @@ public class SocketCoreController {
             byte[] array = getMetaDataBytes(metaData);
             //获取携带数据长度
             ByteBuffer byteBuffer = ByteBuffer.allocate(array[0] << 8 | array[1]);
-            Optional.ofNullable(OPTBHandlerChache.getHandler(array[2])).orElse(new OPTBErrorHandler()).execute(getMetaDataBytes(byteBuffer),activity);
+            Optional.ofNullable(OPTBHandlerCache.getHandler(array[2])).orElse(new OPTBErrorHandler()).execute(getMetaDataBytes(byteBuffer),activity);
         }
     }
     private byte[] getMetaDataBytes(ByteBuffer byteBuffer){
