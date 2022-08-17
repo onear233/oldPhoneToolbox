@@ -3,7 +3,7 @@ package com.oldphonetoolbox.onear.handler;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OPTBHandlerChache {
+public class OPTBHandlerCache {
     private static final Map<Byte,OPTBHandlerInterface> handlers_map = new HashMap<>();
     static{
         //注入handler数据
