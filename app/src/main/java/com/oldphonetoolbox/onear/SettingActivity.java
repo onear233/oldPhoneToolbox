@@ -25,6 +25,6 @@ public class SettingActivity extends AppCompatActivity {
         for (int i = 0; i < tittleArray.length; i++) {
             
         }
-        //SimpleAdapter simpleAdapter = new SimpleAdapter(this,list);
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this,list);
     }
 }

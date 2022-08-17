@@ -1,15 +1,12 @@
 package com.oldphonetoolbox.onear;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,8 +14,6 @@ import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BatteryReceiver batteryReceiver;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //设置应用横屏并全屏显示
@@ -42,16 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         batteryValue = findViewById(R.id.battery_remain);
         findViewById(R.id.btn_setting).setOnClickListener(this);
         //开辟一个新线程
-        Thread socket = new Thread(() -> {
-            try {
-                new SocketCoreController().starter(this);
-            } catch (Exception e) {
-                Log.e("Socket", "网络通信: " + e.getMessage());
-                System.exit(500);
-            }
-        });
-        socket.setDaemon(true);
-        socket.start();
+        new Thread(()->{
+            new SocketCoreController().starter(this);
+        }).start();
+
     }
 
     @Override
