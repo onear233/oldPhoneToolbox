@@ -3,6 +3,7 @@ package com.oldphonetoolbox.onear;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -13,10 +14,13 @@ import java.util.Map;
 
 public class SettingActivity extends AppCompatActivity {
     //数据源，tittleArray为标题，descriptionArray为描述
-//    private final String[] titleArray = {getResources().getString(R.string.settings_color_title),getResources().getString(R.string.settings_st2_desc)};
-//    private final String[] descriptionArray = {getResources().getString(R.string.settings_color_desc),getResources().getString(R.string.settings_st2_desc)};
-    private final String[] titleArray = {"uioluiolu","getResources().getString(R.string.settings_st2_desc)"};
-    private final String[] descriptionArray = {"getResources().getString(R.string.settings_color_desc)","getResources().getString(R.string.settings_st2_desc)"};
+    String settingsColorTitle = getString(R.string.settings_color_title);
+    String settingsColorDesc = getString(R.string.settings_color_desc);
+    String settingsPasswordTitle = getString(R.string.settings_password_title);
+    String settingsPasswordDesc = getString(R.string.settings_password_desc);
+
+    private final String[] titleArray = {settingsColorTitle,settingsColorDesc};
+    private final String[] descriptionArray = {settingsPasswordTitle,settingsPasswordDesc};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,5 @@ public class SettingActivity extends AppCompatActivity {
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,list,R.layout.simple_list_item,new String[]{"title","desc"},new int[]{R.id.setting_item_tittle,R.id.setting_item_desc});
         ListView lv_settings = findViewById(R.id.lv_settings);
         lv_settings.setAdapter(simpleAdapter);
-        //dsahfashfa
     }
 }
