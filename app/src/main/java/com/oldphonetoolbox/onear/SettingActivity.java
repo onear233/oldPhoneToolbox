@@ -22,9 +22,7 @@ public class SettingActivity extends AppCompatActivity {
 
     private void showListview() {
         List<Map<String,Object>> list = new ArrayList<>();
-        for (int i = 0; i < tittleArray.length; i++) {
-            
-        }
+        for (int i = 0; i < tittleArray.length; i++) {}
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,list);
     }
 }
