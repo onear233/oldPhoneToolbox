@@ -14,13 +14,12 @@ import java.util.Map;
 
 public class SettingActivity extends AppCompatActivity {
     //数据源，tittleArray为标题，descriptionArray为描述
-    String settingsColorTitle = getString(R.string.settings_color_title);
-    String settingsColorDesc = getString(R.string.settings_color_desc);
-    String settingsPasswordTitle = getString(R.string.settings_password_title);
-    String settingsPasswordDesc = getString(R.string.settings_password_desc);
 
-    private final String[] titleArray = {settingsColorTitle,settingsColorDesc};
-    private final String[] descriptionArray = {settingsPasswordTitle,settingsPasswordDesc};
+    Constant constant = new Constant();
+    private final String[] titleArray = {constant.settingsColorTitle,constant.settingsPasswordTitle};
+    private final String[] descriptionArray = {constant.settingsColorDesc,constant.settingsPasswordDesc};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +36,9 @@ public class SettingActivity extends AppCompatActivity {
             item.put("desc",descriptionArray[i]);
             list.add(item);
         }
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this,list,R.layout.simple_list_item,new String[]{"title","desc"},new int[]{R.id.setting_item_tittle,R.id.setting_item_desc});
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this,list,R.layout.simple_list_item_tv_only,new String[]{"title","desc"},new int[]{R.id.setting_item_tittle,R.id.setting_item_desc});
         ListView lv_settings = findViewById(R.id.lv_settings);
         lv_settings.setAdapter(simpleAdapter);
+        lv_settings.Listener
     }
 }

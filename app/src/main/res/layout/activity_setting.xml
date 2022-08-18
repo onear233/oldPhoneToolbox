@@ -35,7 +35,8 @@
         android:paddingRight="2sp"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:divider="@null">
+        android:divider="@color/transparent"
+        android:dividerHeight="7dp">
 
     </ListView>
 
