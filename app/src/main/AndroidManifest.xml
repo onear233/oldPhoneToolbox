@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OldPhoneToolBox">
         <activity
-            android:name=".TranslateActivity"
+            android:name=".handler.translation.TranslateActivity"
             android:exported="false" />
         <activity
             android:name=".HelpActivity"
@@ -32,9 +32,6 @@
             </intent-filter>
         </activity>
     </application>
-</manifest>
-    <!--网络权限请求-->
-
     <!-- 允许访问wifi状态的权限 --><!--允许应用程序改变网络状态-->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <!--允许应用程序改变WIFI连接状态-->
