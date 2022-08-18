@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OldPhoneToolBox">
         <activity
+            android:name=".TranslateActivity"
+            android:exported="false" />
+        <activity
             android:name=".HelpActivity"
             android:exported="false" />
         <activity
