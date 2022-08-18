@@ -4,7 +4,9 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.oldphonetoolbox.onear.data.constant.socket.SocketHandlerConfig;
 import com.oldphonetoolbox.onear.handler.error.OPTBErrorHandler;
+import com.oldphonetoolbox.onear.handler.translation.TranslationExecutor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,7 @@ public class OPTBHandlerCache {
     private static final OPTBHandlerInterface ERROR = new OPTBErrorHandler();
     static{
         //注入handler数据
+        handlers_map.put(SocketHandlerConfig.HANDLER_TRANSLATION.getId(),new TranslationExecutor());
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static OPTBHandlerInterface getHandler(byte id){

@@ -2,6 +2,8 @@ package com.oldphonetoolbox.onear.handler;
 
 import com.oldphonetoolbox.onear.MainActivity;
 
+import java.nio.channels.SocketChannel;
+
 /**
  * 功能处理器接口
  * @author midreamsheep
@@ -12,5 +14,5 @@ public interface OPTBHandlerInterface {
      * @param data 传递数据
      * @param activity 页面对象
      * */
-    void execute(byte[] data, MainActivity activity);
+    void execute(byte[] data, MainActivity activity, SocketChannel socketChannel);
 }

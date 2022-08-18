@@ -1,6 +1,7 @@
 package com.oldphonetoolbox.onear.socket;
 
 import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -13,6 +14,7 @@ import com.oldphonetoolbox.onear.socket.tool.IpAddress;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
@@ -27,6 +29,7 @@ public class SocketCoreController {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void starter(MainActivity activity) throws IOException {
+        this.activity = activity;
         //建立通道
         ServerSocketChannel socketChannel  = ServerSocketChannel.open();
         socketChannel.bind(new InetSocketAddress(SocketConstantConfig.CHANNEL_PORT));
@@ -37,12 +40,14 @@ public class SocketCoreController {
                 //获取本机局域网ip地址
                 Toast.makeText(activity, "ip地址:"+s, Toast.LENGTH_LONG).show();
             });
+            Log.i(SocketConstantConfig.SOCKET_TAG, "等待连接中");
             SocketChannel accept = socketChannel.accept();
             channelProcess(accept);
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void channelProcess(SocketChannel client) throws IOException {
+        Log.i(SocketConstantConfig.SOCKET_TAG, "连接成功建立");
         while (SocketConstantConfig.IS_FLAG){
             //等待读取
             client.read(metaData);
@@ -50,7 +55,7 @@ public class SocketCoreController {
             //获取携带数据长度
             ByteBuffer byteBuffer = ByteBuffer.allocate(array[0] << 8 | array[1]);
             client.read(byteBuffer);
-            OPTBHandlerCache.getHandler(array[2]).execute(getMetaDataBytes(byteBuffer),activity);
+            OPTBHandlerCache.getHandler(array[2]).execute(getMetaDataBytes(byteBuffer),activity,client);
         }
     }
     private byte[] getMetaDataBytes(ByteBuffer byteBuffer){
