@@ -32,7 +32,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/divider"
         android:paddingLeft="2sp"
-        android:paddingRight="2sp">
+        android:paddingRight="2sp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:divider="@color/transparent"
+        android:dividerHeight="7dp">
 
     </ListView>
 

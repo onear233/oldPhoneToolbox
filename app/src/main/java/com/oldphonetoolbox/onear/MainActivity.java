@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         socket.setDaemon(true);
         socket.start();
+
     }
 
     @Override
