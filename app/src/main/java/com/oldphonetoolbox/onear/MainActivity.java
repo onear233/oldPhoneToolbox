@@ -53,15 +53,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         socket.setDaemon(true);
         socket.start();
 
+        //此为调试所用
+        Intent intent = new Intent(this,MainActivityConnected.class);
+        startActivity(intent);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        batteryListener();
+    }
+
+    public void batteryListener() {
         batteryReceiver = new BatteryReceiver(); //实例化BatteryReceiver对象，并声明为全局
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED); //创建过滤器，只收这一个广播
         registerReceiver(batteryReceiver,intentFilter);
     }
+
 
     @Override
     protected void onStop() {
