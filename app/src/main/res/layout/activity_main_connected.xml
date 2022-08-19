@@ -4,59 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityConnected"
+    tools:context=".toolactivity.monitor.MonitorActivityCompat"
     android:background="@color/black">
-    <TextClock
-        android:id="@+id/tc_time_cne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/battery_remain_cne"
-        android:textSize="50sp"
-        android:layout_above="@+id/battery_remain"
-        android:textColor="@color/white"
-        android:paddingTop="10sp"
-        android:paddingStart="10sp"/>
-
-    <TextView
-        android:id="@+id/battery_remain_cne"
-        android:layout_below="@+id/tc_date_cne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
-        android:layout_marginTop="10sp"
-        android:text="@string/battery_hint"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
-
-    <TextClock
-        android:id="@+id/tc_date_cne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:format12Hour ="yyyy-MM-dd\EEEE"
-        android:format24Hour ="yyyy-MM-dd\EEEE"
-        android:paddingTop="10sp"
-        android:layout_marginLeft="10sp"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:layout_below="@+id/battery_remain"/>
-
-    <ImageButton
-        android:id="@+id/btn_setting_cne"
-        android:layout_width="25sp"
-        android:layout_height="25sp"
-        android:layout_marginTop="10sp"
-        android:layout_marginRight="10sp"
-        android:background="@color/transparent"
-        android:src="@drawable/setting"
-        android:scaleType="fitCenter"
-        android:layout_alignParentEnd="true"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/btn_setting_cne"
+        android:layout_alignParentLeft="true"
         android:paddingTop="5sp"
         android:paddingEnd="15sp">
         <TextView

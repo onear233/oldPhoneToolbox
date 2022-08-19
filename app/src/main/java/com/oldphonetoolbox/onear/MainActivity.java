@@ -9,17 +9,15 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.oldphonetoolbox.onear.net.translate.Translator;
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
-import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
+import com.oldphonetoolbox.onear.toolactivity.monitor.MonitorActivityCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,10 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         socket.setDaemon(true);
         socket.start();
-
-        //此为调试所用
-        Intent intent = new Intent(this,MainActivityConnected.class);
-        startActivity(intent);
 
     }
 
