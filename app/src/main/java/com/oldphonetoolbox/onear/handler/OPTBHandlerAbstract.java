@@ -6,10 +6,10 @@ import java.nio.channels.SocketChannel;
 
 public abstract class OPTBHandlerAbstract implements OPTBHandlerInterface{
     @Override
-    public void execute(byte[] data, MainActivity activity, SocketChannel socketChannel) {
+    public void execute(byte[] data, MainActivity activity) {
         activity.runOnUiThread(()->{
-            executeCode(data,activity,socketChannel);
+            executeCode(data,activity);
         });
     }
-    protected abstract void executeCode(byte[] data, MainActivity activity,SocketChannel socketChannel);
+    protected abstract void executeCode(byte[] data, MainActivity activity );
 }

@@ -14,5 +14,5 @@ public interface OPTBHandlerInterface {
      * @param data 传递数据
      * @param activity 页面对象
      * */
-    void execute(byte[] data, MainActivity activity, SocketChannel socketChannel);
+    void execute(byte[] data, MainActivity activity);
 }

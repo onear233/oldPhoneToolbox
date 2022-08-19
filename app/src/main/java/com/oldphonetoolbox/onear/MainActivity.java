@@ -9,16 +9,17 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.oldphonetoolbox.onear.net.translate.Translator;
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
-
-import java.io.IOException;
+import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("StaticFieldLeak")
     private static TextView batteryValue;
     private BatteryReceiver batteryReceiver;
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
