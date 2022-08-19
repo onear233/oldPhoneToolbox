@@ -6,7 +6,7 @@ import java.net.URLEncoder;
 
 public class Translator {
     public static String translate(String langFrom, String langTo,String word) throws Exception {
-        String url = "https://translate.googleapis.com/translate_a/single?" +
+        String url = "https://translate.googleapis.cn/translate_a/single?" +
                 "client=gtx&" +
                 "sl=" + langFrom +
                 "&tl=" + langTo +
