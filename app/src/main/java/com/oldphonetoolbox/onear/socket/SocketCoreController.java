@@ -1,6 +1,7 @@
 package com.oldphonetoolbox.onear.socket;
 
 import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -8,28 +9,29 @@ import androidx.annotation.RequiresApi;
 import com.oldphonetoolbox.onear.*;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
 import com.oldphonetoolbox.onear.handler.OPTBHandlerCache;
-import com.oldphonetoolbox.onear.handler.error.OPTBErrorHandler;
 import com.oldphonetoolbox.onear.socket.tool.IpAddress;
+import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.Optional;
 
 public class SocketCoreController {
 
     //页面对象
     private MainActivity activity;
-
+    public static SocketChannel socketChannel;
     private final ByteBuffer metaData = ByteBuffer.allocate(SocketConstantConfig.FIRST_LENGTH);
+    public static OPTBActivityCompat optbActivityCompat;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void starter(MainActivity activity) throws IOException {
+        this.activity = activity;
         //建立通道
-        ServerSocketChannel socketChannel  = ServerSocketChannel.open();
-        socketChannel.bind(new InetSocketAddress(SocketConstantConfig.CHANNEL_PORT));
+        ServerSocketChannel socketChannelServer  = ServerSocketChannel.open();
+        socketChannelServer.bind(new InetSocketAddress(SocketConstantConfig.CHANNEL_PORT));
         while (SocketConstantConfig.IS_FLAG){
             String s = IpAddress.getIpAddress();
             //等待连接
@@ -37,19 +39,26 @@ public class SocketCoreController {
                 //获取本机局域网ip地址
                 Toast.makeText(activity, "ip地址:"+s, Toast.LENGTH_LONG).show();
             });
-            SocketChannel accept = socketChannel.accept();
-            channelProcess(accept);
+            Log.i(SocketConstantConfig.SOCKET_TAG, "等待连接中");
+            socketChannel = socketChannelServer.accept();
+            channelProcess();
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private void channelProcess(SocketChannel client) throws IOException {
+    private void channelProcess() throws IOException {
+        Log.i(SocketConstantConfig.SOCKET_TAG, "连接成功建立");
         while (SocketConstantConfig.IS_FLAG){
             //等待读取
-            client.read(metaData);
+            socketChannel.read(metaData);
             byte[] array = getMetaDataBytes(metaData);
             //获取携带数据长度
             ByteBuffer byteBuffer = ByteBuffer.allocate(array[0] << 8 | array[1]);
-            Optional.ofNullable(OPTBHandlerCache.getHandler(array[2])).orElse(new OPTBErrorHandler()).execute(getMetaDataBytes(byteBuffer),activity);
+            socketChannel.read(byteBuffer);
+            if(optbActivityCompat!=null){
+                optbActivityCompat.back();
+                optbActivityCompat = null;
+            }
+            OPTBHandlerCache.getHandler(array[2]).execute(getMetaDataBytes(byteBuffer),activity);
         }
     }
     private byte[] getMetaDataBytes(ByteBuffer byteBuffer){
@@ -58,6 +67,4 @@ public class SocketCoreController {
         byteBuffer.clear();
         return array;
     }
-
 }
-

@@ -2,6 +2,8 @@ package com.oldphonetoolbox.onear.handler;
 
 import com.oldphonetoolbox.onear.MainActivity;
 
+import java.nio.channels.SocketChannel;
+
 /**
  * 功能处理器接口
  * @author midreamsheep
