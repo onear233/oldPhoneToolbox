@@ -23,6 +23,5 @@ public class MainActivityConnected extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new MainActivity().batteryListener();
     }
 }
