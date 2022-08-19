@@ -2,12 +2,17 @@ package com.oldphonetoolbox.onear;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +55,22 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position){
             case 0:
-
+                break;
+            case 1:
+                Log.d("onClick","1被点击");
+                showPasswordEnterDialog();
+                break;
         }
+    }
+
+    private void showPasswordEnterDialog() {
+        final EditText editText = new EditText(SettingActivity.this);
+        AlertDialog.Builder inputDialog = new AlertDialog.Builder(SettingActivity.this);
+        inputDialog.setTitle("请输入密码").setView(editText);
+        inputDialog.setPositiveButton("确定", (dialog, which) -> Toast.makeText(SettingActivity.this, editText.getText().toString(), Toast.LENGTH_SHORT).show());
+        inputDialog.setNegativeButton("取消", (dialog, which) -> { return; });
+        AlertDialog dialog = inputDialog.create();
+        dialog.show();
+
     }
 }
