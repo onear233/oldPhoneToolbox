@@ -11,7 +11,7 @@ import java.nio.channels.SocketChannel;
 public class OPTBErrorHandler extends OPTBHandlerAbstract {
 
     @Override
-    protected void executeCode(byte[] data, MainActivity activity, SocketChannel socketChannel) {
+    protected void executeCode(byte[] data, MainActivity activity ) {
         Toast.makeText(activity, "错误的调用id，电脑端可能属于三方魔改版本，小心使用", Toast.LENGTH_LONG).show();
     }
 }

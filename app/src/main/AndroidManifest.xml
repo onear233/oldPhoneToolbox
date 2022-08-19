@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OldPhoneToolBox">
+
         <activity
-            android:name=".handler.translation.TranslateActivity"
+            android:name=".toolactivity.translation.TranslateActivity"
             android:exported="false" />
         <activity
             android:name=".HelpActivity"
