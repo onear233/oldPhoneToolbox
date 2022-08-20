@@ -7,9 +7,20 @@
     tools:context=".toolactivity.DownloadProcess"
     android:background="@color/black">
     <ProgressBar
+        android:id="@+id/pb_download"
         android:layout_width="200sp"
-        android:layout_height="wrap_content"
+        android:layout_height="20sp"
         android:max="100"
-        style="?android:attr/progressBarStyleHorizontal" />
+        style="@style/ProgressBar"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/process_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@+id/pb_download"
+        android:text="@string/default_text"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
