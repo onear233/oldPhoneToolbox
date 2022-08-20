@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
+import com.oldphonetoolbox.onear.toolactivity.DownloadProcess;
 import com.oldphonetoolbox.onear.toolactivity.monitor.MonitorActivityCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         socket.setDaemon(true);
         socket.start();
+
+        Intent intent = new Intent(this,DownloadProcess.class);
+        startActivity(intent);
 
     }
 
