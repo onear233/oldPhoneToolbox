@@ -7,7 +7,7 @@
     tools:context=".toolactivity.DownloadProcess"
     android:background="@color/black">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/group_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,46 +16,49 @@
         <ProgressBar
             android:id="@+id/pb_download1"
             android:layout_width="250sp"
-            android:layout_height="12sp"
+            android:layout_height="5sp"
             android:max="100"
             style="@style/ProgressBar"
             android:layout_centerInParent="true"/>
         <TextView
             android:id="@+id/process_download1"
-            android:layout_width="wrap_content"
+            android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="13sp"
             android:paddingLeft="8dp"
+            android:layout_toRightOf="@id/pb_download1"
             android:text="@string/default_text"
             android:layout_centerInParent="true"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/group_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
+
         <ProgressBar
             android:id="@+id/pb_download2"
-            android:layout_width="250sp"
-            android:layout_height="13sp"
-            android:max="100"
             style="@style/ProgressBar"
-            android:layout_centerInParent="true"/>
+            android:layout_width="250sp"
+            android:layout_height="5sp"
+            android:layout_centerInParent="true"
+            android:max="100" />
+
         <TextView
             android:id="@+id/process_download2"
-            android:layout_width="wrap_content"
+            android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="13sp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/pb_download2"
             android:paddingLeft="8dp"
-            android:layout_below="@+id/pb_download"
             android:text="@string/default_text"
-            android:layout_centerInParent="true"/>
-    </LinearLayout>
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/group_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,20 +67,20 @@
         <ProgressBar
             android:id="@+id/pb_download3"
             android:layout_width="250sp"
-            android:layout_height="13sp"
+            android:layout_height="5sp"
             android:max="100"
             style="@style/ProgressBar"
             android:layout_centerInParent="true"/>
         <TextView
             android:id="@+id/process_download3"
-            android:layout_width="wrap_content"
+            android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="13sp"
             android:paddingLeft="8dp"
-            android:layout_below="@+id/pb_download"
+            android:layout_toRightOf="@id/pb_download3"
             android:text="@string/default_text"
             android:layout_centerInParent="true"/>
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

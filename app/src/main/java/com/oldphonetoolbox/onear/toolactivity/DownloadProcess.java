@@ -12,9 +12,9 @@ import com.oldphonetoolbox.onear.R;
 
 public class DownloadProcess extends AppCompatActivity {
 
-    private int downloadProcess1 = 11;
-    private int downloadProcess2 = 45;
-    private int downloadProcess3 = 14;
+    private int downloadProcess1;
+    private int downloadProcess2;
+    private int downloadProcess3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
