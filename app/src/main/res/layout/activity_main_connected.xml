@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:layout_height="0sp"
             android:textSize="40sp"
-            android:text="@string/default_text"
+            android:text=""
             android:textColor="@color/white"/>
         <TextView
             android:id="@+id/memory_usage_total"
@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:layout_height="0sp"
             android:textSize="40sp"
-            android:text="@string/default_text"
+            android:text=""
             android:textColor="@color/white"/>
         <TextView
             android:id="@+id/process_num"
@@ -44,7 +44,7 @@
             android:layout_weight="1"
             android:layout_height="0sp"
             android:textSize="40sp"
-            android:text="@string/default_text"
+            android:text=""
             android:textColor="@color/white"/>
     </LinearLayout>
 
