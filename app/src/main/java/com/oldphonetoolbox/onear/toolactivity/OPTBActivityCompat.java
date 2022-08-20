@@ -7,13 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
 
 
-public class OPTBActivityCompat extends AppCompatActivity {
+public abstract class OPTBActivityCompat extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SocketCoreController.optbActivityCompat = this;
     }
+    public abstract void close();
     public void back(){
+        close();
         finish();
     }
 }

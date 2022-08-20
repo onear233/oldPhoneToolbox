@@ -5,6 +5,8 @@ import java.nio.ByteBuffer;
 public class SocketConstantConfig {
     //nio端口号
     public static final int CHANNEL_PORT = 7751;
+    //监听端口号
+    public static final int LISTEN_PORT = 13256;
     //保持循环
     public static boolean IS_FLAG = true;
     //第一次传递的值长度
