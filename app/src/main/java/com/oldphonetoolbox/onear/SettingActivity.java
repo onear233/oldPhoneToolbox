@@ -2,12 +2,17 @@ package com.oldphonetoolbox.onear;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +27,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     private final String[] descriptionArray = {constant.settingsColorDesc,constant.settingsPasswordDesc};
     private List<Map<String, Object>> list;
     private HashMap<String, Object> item;
+    private EditText editText;
 
 
     @Override
@@ -50,7 +56,47 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position){
             case 0:
-
+                break;
+            case 1:
+                showPasswordEnterDialog();//显示对话框的方法
+                break;
         }
+    }
+
+    private void showPasswordEnterDialog() {
+        editText = new EditText(SettingActivity.this);
+        AlertDialog.Builder inputDialog = new AlertDialog.Builder(SettingActivity.this);
+        inputDialog.setTitle("请输入密码").setView(editText);
+        inputDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (editText.getText().toString().length() != 0){
+                    savePassword(editText.getText().toString());
+                }else{
+                    Toast.makeText(SettingActivity.this,"密码为空！",Toast.LENGTH_SHORT);
+                    return;
+                }
+            }
+        });
+        inputDialog.setNegativeButton("取消", (dialog, which) -> { return; });
+        AlertDialog dialog = inputDialog.create();
+        dialog.show();//展示对话框
+        getPassword();
+
+
+    }
+
+    private void getPassword() {
+        SharedPreferences getPWD = getSharedPreferences("password", MODE_PRIVATE);
+        String getPassword = getPWD.getString("pwd","");
+        editText.setText(getPassword);
+    }
+
+
+    private void savePassword(String pwd) {
+        SharedPreferences password = getSharedPreferences("password", MODE_PRIVATE);
+        SharedPreferences.Editor editor = password.edit();
+        editor.putString("pwd",pwd);
+        editor.commit();
     }
 }
