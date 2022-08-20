@@ -5,6 +5,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.oldphonetoolbox.onear.data.constant.socket.SocketHandlerConfig;
+import com.oldphonetoolbox.onear.handler.download.DownloadHandler;
 import com.oldphonetoolbox.onear.handler.error.OPTBErrorHandler;
 import com.oldphonetoolbox.onear.handler.monitor.MonitorHandler;
 import com.oldphonetoolbox.onear.handler.translation.TranslationExecutor;
@@ -27,6 +28,7 @@ public class OPTBHandlerCache {
             }
         });
         handlers_map.put(SocketHandlerConfig.MONITOR.getId(),new MonitorHandler());
+        handlers_map.put(SocketHandlerConfig.DOWNLOAD.getId(),new DownloadHandler());
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static OPTBHandlerInterface getHandler(byte id){

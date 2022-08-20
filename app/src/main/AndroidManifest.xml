@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许应用程序完全使用网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--存储权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -19,10 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OldPhoneToolBox">
         <activity
-            android:name=".toolactivity.DownloadProcess"
-            android:exported="false" />
-        <activity
-            android:name=".toolactivity.picture.PictureDisplay"
+            android:name=".toolactivity.download.DownloadProcess"
             android:exported="false" />
         <activity
             android:name=".toolactivity.translation.TranslateActivity"
