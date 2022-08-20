@@ -22,7 +22,7 @@
             android:name=".toolactivity.DownloadProcess"
             android:exported="false" />
         <activity
-            android:name=".toolactivity.PictureDisplay"
+            android:name=".toolactivity.picture.PictureDisplay"
             android:exported="false" />
         <activity
             android:name=".toolactivity.translation.TranslateActivity"

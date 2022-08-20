@@ -1,11 +1,10 @@
-package com.oldphonetoolbox.onear.handler.translation;
+package com.oldphonetoolbox.onear.handler.picture;
 
 import android.content.Intent;
-import android.media.Image;
 
 import com.oldphonetoolbox.onear.MainActivity;
 import com.oldphonetoolbox.onear.handler.OPTBHandlerAbstract;
-import com.oldphonetoolbox.onear.toolactivity.PictureDisplay;
+import com.oldphonetoolbox.onear.toolactivity.picture.PictureDisplay;
 
 public class DisplayExecutor extends OPTBHandlerAbstract {
     @Override
