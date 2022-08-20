@@ -34,6 +34,10 @@ public class TranslateActivity extends OPTBActivityCompat {
         new Thread(new TranslatorThread(this,source)).start();
     }
 
+    @Override
+    public void close() {
+    }
+
     private TextView setLight(TextView textView) {
         //设置荧光效果
         textView.setShadowLayer(30,0,0, Color.WHITE);

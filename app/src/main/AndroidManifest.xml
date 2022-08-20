@@ -21,7 +21,7 @@
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivityConnected"
+            android:name=".toolactivity.monitor.MonitorActivityCompat"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
