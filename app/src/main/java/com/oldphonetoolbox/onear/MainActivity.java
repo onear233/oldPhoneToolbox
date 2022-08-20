@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
+import com.oldphonetoolbox.onear.toolactivity.DownloadProcess;
 import com.oldphonetoolbox.onear.toolactivity.MonitorActivityCompact;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -53,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         socket.start();
 
         //此为调试所用
-//        Intent intent = new Intent(this, MonitorActivityCompact.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, DownloadProcess.class);
+        startActivity(intent);
 
     }
 

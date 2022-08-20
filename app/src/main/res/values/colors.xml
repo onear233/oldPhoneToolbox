@@ -10,4 +10,5 @@
     <color name="transparent">#00000000</color>
     <color name="divider_gray">#90909090</color>
     <color name="description_gray">#B4B4B9</color>
+    <color name="background_gray">#F0eFF4</color>
 </resources>
