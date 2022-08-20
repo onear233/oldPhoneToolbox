@@ -12,7 +12,9 @@ import com.oldphonetoolbox.onear.R;
 
 public class DownloadProcess extends AppCompatActivity {
 
-    private int downloadProcess;
+    private int downloadProcess1 = 11;
+    private int downloadProcess2 = 45;
+    private int downloadProcess3 = 14;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,14 @@ public class DownloadProcess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_download_process);
-        ProgressBar downloadProgress = findViewById(R.id.pb_download);
 
-        downloadProgress.setProgress(downloadProcess);
+        ProgressBar downloadProgress1 = findViewById(R.id.pb_download1);
+        downloadProgress1.setProgress(downloadProcess1);
+
+        ProgressBar downloadProgress2 = findViewById(R.id.pb_download2);
+        downloadProgress2.setProgress(downloadProcess2);
+
+        ProgressBar downloadProgress3 = findViewById(R.id.pb_download3);
+        downloadProgress3.setProgress(downloadProcess3);
     }
 }
