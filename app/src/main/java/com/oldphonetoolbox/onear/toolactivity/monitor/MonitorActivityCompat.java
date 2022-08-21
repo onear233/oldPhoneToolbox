@@ -1,5 +1,6 @@
 package com.oldphonetoolbox.onear.toolactivity.monitor;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.oldphonetoolbox.onear.R;
 import com.oldphonetoolbox.onear.data.pojo.WindowsBean;
@@ -39,8 +41,8 @@ public class MonitorActivityCompat extends OPTBActivityCompat {
         new Thread(new MonitorThread(this)).start();
     }
 
+    @SuppressLint("SetTextI18n")
     public void setData(WindowsBean data){
-        System.out.println(data.toString());
         title.setText(data.getWindowTitle());
         cpuUsageAndCount.setText("CPU使用率"+data.getCpuUsage()+"/ CPU核心数"+data.getCpuCount());
         memoryUsageAndTotal.setText("内存使用率"+data.getMemoryUsage()+"/ 内存总量"+data.getMemoryTotal());
