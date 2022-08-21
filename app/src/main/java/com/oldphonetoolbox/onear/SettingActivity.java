@@ -24,8 +24,8 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     //数据源，tittleArray为标题，descriptionArray为描述
 
     Constant constant = new Constant();
-    private final String[] settingTitleArray = {constant.settingsColorTitle,constant.settingsPasswordTitle,constant.settingsIpAddressTitle};
-    private final String[] settingDescriptionArray = {constant.settingsColorDesc,constant.settingsPasswordDesc,constant.settingsIpAddressDesc};
+    private final String[] settingTitleArray = {constant.settingsBackgroundColorTitle,constant.settingsTextColorTitle,constant.settingsPasswordTitle,constant.settingsIpAddressTitle};
+    private final String[] settingDescriptionArray = {constant.settingsBackgroundColorDesc,constant.settingsTextColorDesc,constant.settingsPasswordDesc,constant.settingsIpAddressDesc};
     private final String[] helpTitleArray = {constant.helpAndAboutTitle};
     private final String[] helpDescriptionArray = {constant.helpAndAboutDesc};
     private List<Map<String, Object>> list;
@@ -74,7 +74,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
                 case 0:
                     break;
                 case 1:
-                    showPasswordEnterDialog();//显示对话框的方法
+                    showDialog("请输入文字颜色的16进制码（仅支持6位）","确定","取消","#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})(?=;|[^(]*\\))","textColor","此颜色不正确！");//显示对话框的方法
                     break;
                 case 2:
                     showIpAddressEnterDialog();//显示输入电脑Ip地址的方法
@@ -82,6 +82,31 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         }else{
             return;
         }
+    }
+
+    private void showDialog(String title,String positiveButtonText,String negativeButtonText,String regularExpression,String getAndSaveStrKey,String unsuitableToast){
+        editText = new EditText(this);
+        AlertDialog.Builder iPInputDialog = new AlertDialog.Builder(this);
+        iPInputDialog.setTitle(title).setView(editText);
+        String input = editText.getText().toString();
+        iPInputDialog.setPositiveButton(positiveButtonText,(dialog, which) -> {
+            if (regularExpression.length() != 0){
+                String rE = regularExpression;
+                boolean isLegal = Pattern.matches(rE,input);
+                if (isLegal){
+                    saveStr(getAndSaveStrKey,input);
+                }else{
+                    Toast.makeText(SettingActivity.this,unsuitableToast,Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                saveStr(getAndSaveStrKey,input);
+            }
+
+        });
+        iPInputDialog.setNegativeButton(negativeButtonText, (dialog, which) -> { return; });
+        AlertDialog dialog = iPInputDialog.create();
+        dialog.show();//展示对话框
+        getStr(getAndSaveStrKey);
     }
 
     private void showIpAddressEnterDialog() {
@@ -99,9 +124,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
             }
         });
         iPInputDialog.setNegativeButton("取消", (dialog, which) -> { return; });
-        AlertDialog dialog = iPInputDialog.create();
-        dialog.show();//展示对话框
-        getStr("ipAddress");
+
     }
 
     private void showPasswordEnterDialog() {

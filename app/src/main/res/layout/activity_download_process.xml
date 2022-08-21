@@ -21,14 +21,14 @@
             android:layout_centerHorizontal="true"/>
         <TextView
             android:id="@+id/process_download1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textColor="@color/white"
+            android:gravity="top|left"
             android:textSize="13sp"
             android:paddingLeft="8dp"
             android:layout_toRightOf="@id/pb_download1"
             android:text="@string/not_download" />
-
         <ProgressBar
             android:id="@+id/pb_download2"
             style="@style/ProgressBar"
@@ -39,9 +39,9 @@
             android:paddingTop="2sp" />
         <TextView
             android:id="@+id/process_download2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
             android:layout_toRightOf="@id/pb_download2"
             android:paddingLeft="8dp"
             android:text="@string/not_download"
@@ -57,13 +57,16 @@
             android:layout_centerHorizontal="true"/>
         <TextView
             android:id="@+id/process_download3"
-            android:layout_width="200sp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textColor="@color/white"
             android:textSize="13sp"
             android:paddingLeft="8dp"
             android:layout_toRightOf="@id/pb_download3"
             android:text="@string/not_download"
+            android:lastBaselineToBottomHeight="1sp"
+            android:gravity="bottom|left"
+            android:layout_centerVertical="true"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
