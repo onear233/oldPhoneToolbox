@@ -67,15 +67,12 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         editText = new EditText(SettingActivity.this);
         AlertDialog.Builder inputDialog = new AlertDialog.Builder(SettingActivity.this);
         inputDialog.setTitle("请输入密码").setView(editText);
-        inputDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (editText.getText().toString().length() != 0){
-                    savePassword(editText.getText().toString());
-                }else{
-                    Toast.makeText(SettingActivity.this,"密码为空！",Toast.LENGTH_SHORT);
-                    return;
-                }
+        inputDialog.setPositiveButton("确定", (dialog, which) -> {
+            if (editText.getText().toString().length() != 0){
+                savePassword(editText.getText().toString());
+            }else{
+                Toast.makeText(SettingActivity.this,"密码为空！",Toast.LENGTH_SHORT);
+                return;
             }
         });
         inputDialog.setNegativeButton("取消", (dialog, which) -> { return; });
