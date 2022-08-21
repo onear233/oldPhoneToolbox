@@ -16,7 +16,7 @@
         android:textSize="15dp" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/setting_divider"
         android:layout_width="match_parent"
         android:layout_below="@+id/prompt"
         android:layout_height="2dp"
@@ -30,13 +30,48 @@
         android:id="@+id/lv_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divider"
+        android:layout_below="@+id/setting_divider"
         android:paddingLeft="2sp"
         android:paddingRight="2sp"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:divider="@color/transparent"
-        android:dividerHeight="7dp">
+        android:dividerHeight="10dp">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/help_about"
+        android:textSize="15dp"
+        android:layout_below="@+id/lv_settings"/>
+
+    <View
+        android:id="@+id/help_divider"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/help"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/divider_gray" />
+
+    <ListView
+        android:id="@+id/lv_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/help_divider"
+        android:paddingLeft="2sp"
+        android:paddingRight="2sp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:divider="@color/transparent"
+        android:dividerHeight="10dp">
 
     </ListView>
 

@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public static void setBattery(int a) {
-        batteryValue.setText(a + "%");
+        batteryValue.setText("目前电量：" + a + "%");
     }
 
 
