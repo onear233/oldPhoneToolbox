@@ -31,6 +31,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     private List<Map<String, Object>> list;
     private HashMap<String, Object> item;
     private EditText editText;
+    private final String REGEX_COLOR = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
 
 
     @Override
@@ -72,38 +73,36 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         }else if(parent.getId() == R.id.lv_settings){
             switch (position){
                 case 0:
+                    showDialog("请输入文字颜色的16进制码（仅支持6位）","确定","取消","backgroundColor","此颜色不正确！",REGEX_COLOR);
                     break;
                 case 1:
-                    showDialog("请输入文字颜色的16进制码（仅支持6位）","确定","取消","#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})(?=;|[^(]*\\))","textColor","此颜色不正确！");//显示对话框的方法
+                    showDialog("请输入文字颜色的16进制码（仅支持6位）","确定","取消","textColor","此颜色不正确！",REGEX_COLOR);//显示对话框的方法
                     break;
                 case 2:
                     showIpAddressEnterDialog();//显示输入电脑Ip地址的方法
             }
-        }else{
-            return;
         }
     }
 
-    private void showDialog(String title,String positiveButtonText,String negativeButtonText,String regularExpression,String getAndSaveStrKey,String unsuitableToast){
+    private void showDialog(String title,String positiveButtonText,String negativeButtonText,String getAndSaveStrKey,String unsuitableToast,String REGEX){
         editText = new EditText(this);
-        AlertDialog.Builder iPInputDialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder iPInputDialog = new AlertDialog.Builder(SettingActivity.this);
         iPInputDialog.setTitle(title).setView(editText);
-        String input = editText.getText().toString();
         iPInputDialog.setPositiveButton(positiveButtonText,(dialog, which) -> {
-            if (regularExpression.length() != 0){
-                String rE = regularExpression;
-                boolean isLegal = Pattern.matches(rE,input);
+            if (REGEX.length() != 0){
+                String input = editText.getText().toString();
+                boolean isLegal = Pattern.matches(REGEX,input);
                 if (isLegal){
                     saveStr(getAndSaveStrKey,input);
                 }else{
                     Toast.makeText(SettingActivity.this,unsuitableToast,Toast.LENGTH_SHORT).show();
+                    Log.d("inputEd",input);
                 }
             }else{
-                saveStr(getAndSaveStrKey,input);
+                saveStr(getAndSaveStrKey,editText.getText().toString());
             }
-
         });
-        iPInputDialog.setNegativeButton(negativeButtonText, (dialog, which) -> { return; });
+        iPInputDialog.setNegativeButton(negativeButtonText, (dialog, which) -> {  });
         AlertDialog dialog = iPInputDialog.create();
         dialog.show();//展示对话框
         getStr(getAndSaveStrKey);
