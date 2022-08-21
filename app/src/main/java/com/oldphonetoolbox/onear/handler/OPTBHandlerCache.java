@@ -32,9 +32,12 @@ public class OPTBHandlerCache {
         handlers_map.put(SocketHandlerConfig.DOWNLOAD.getId(),new DownloadHandler());
         handlers_map.put(SocketHandlerConfig.TRANSPORT.getId(), new SendFileHandler());
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static OPTBHandlerInterface getHandler(byte id){
-        return Optional.ofNullable(handlers_map.get(id)).orElse(ERROR);
+        OPTBHandlerInterface anInterface = handlers_map.get(id);
+        if(anInterface!=null){
+            return anInterface;
+        }
+        return ERROR;
     }
     public static OPTBHandlerInterface addHandler(byte id,OPTBHandlerInterface handler){
         return handlers_map.put(id,handler);

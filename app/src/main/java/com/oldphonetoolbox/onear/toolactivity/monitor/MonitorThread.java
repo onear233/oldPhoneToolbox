@@ -19,14 +19,14 @@ public class MonitorThread implements Runnable{
     public MonitorThread(MonitorActivityCompat activity) {
         this.activity = activity;
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     public void run() {
         try {
             isRunning = true;
             System.out.println("执行线程");
             activity.serverSocketChannel = ServerSocketChannel.open();
-            activity.serverSocketChannel.bind(new InetSocketAddress(SocketConstantConfig.LISTEN_PORT));
+            activity.serverSocketChannel.socket().bind(new InetSocketAddress(SocketConstantConfig.LISTEN_PORT));
             SocketChannel accept = activity.serverSocketChannel.accept();
             System.out.println("建立连接");
             ByteBuffer byteBuffer = ByteBuffer.allocate(2);

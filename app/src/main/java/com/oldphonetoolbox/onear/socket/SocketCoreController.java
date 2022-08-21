@@ -1,10 +1,7 @@
 package com.oldphonetoolbox.onear.socket;
 
-import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 
 import com.oldphonetoolbox.onear.*;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
@@ -26,12 +23,11 @@ public class SocketCoreController {
     private final ByteBuffer metaData = ByteBuffer.allocate(SocketConstantConfig.FIRST_LENGTH);
     public static OPTBActivityCompat optbActivityCompat;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void starter(MainActivity activity) throws IOException {
         this.activity = activity;
         //建立通道
         ServerSocketChannel socketChannelServer  = ServerSocketChannel.open();
-        socketChannelServer.bind(new InetSocketAddress(SocketConstantConfig.CHANNEL_PORT));
+        socketChannelServer.socket().bind(new InetSocketAddress(SocketConstantConfig.CHANNEL_PORT));
         while (SocketConstantConfig.IS_FLAG){
             String s = IpAddress.getIpAddress();
             //等待连接
@@ -44,7 +40,6 @@ public class SocketCoreController {
             channelProcess();
         }
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private void channelProcess() throws IOException {
         Log.i(SocketConstantConfig.SOCKET_TAG, "连接成功建立");
         while (SocketConstantConfig.IS_FLAG){

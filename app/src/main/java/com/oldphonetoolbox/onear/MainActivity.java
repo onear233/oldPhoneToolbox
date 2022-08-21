@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static TextView batteryValue;
     private BatteryReceiver batteryReceiver;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //设置应用横屏并全屏显示

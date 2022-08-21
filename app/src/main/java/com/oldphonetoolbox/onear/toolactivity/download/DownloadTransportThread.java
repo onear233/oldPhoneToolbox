@@ -26,7 +26,7 @@ public class DownloadTransportThread implements Runnable{
         this.toIp = toIp;
         this.activity = activity;
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     public void run() {
         Map<String,String> willTransportations;
@@ -42,7 +42,9 @@ public class DownloadTransportThread implements Runnable{
         }catch (Exception e){
             e.printStackTrace();
         }
-        willTransportations.forEach(this::transport);
+        for (Map.Entry<String, String> entry : willTransportations.entrySet()) {
+            transport(entry.getKey(),entry.getValue());
+        }
     }
     private void transport(String name,String url){
         //建立输入流
