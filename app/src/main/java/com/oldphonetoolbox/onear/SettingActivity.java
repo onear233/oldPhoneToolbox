@@ -5,14 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +41,13 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     private HashMap<String, Object> item;
     private EditText editText;
     private final String REGEX_COLOR = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
-
+    private final String REGEX_IP = "^((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.){3}(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])$";
+    private boolean flag;
+    private String colorInput;
+    private RelativeLayout main;
+    private TextView textView;
+    private TextClock textClock;
+    private TextClock textDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +94,19 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
                     showDialog("请输入文字颜色的16进制码（仅支持6位）","确定","取消","textColor","此颜色不正确！",REGEX_COLOR);//显示对话框的方法
                     break;
                 case 2:
-                    showIpAddressEnterDialog();//显示输入电脑Ip地址的方法
+                    showDialog("请输入密码","确定","取消","pwd","密码为空！","");
+                    break;
+                case 3:
+                    showDialog("请输入电脑的IP地址","确定","取消","ipAddress","请输入正确的ip地址",REGEX_IP);
+                    break;
             }
         }
     }
+
+//    private void setTextColor(String color) {
+//        int color1 = Color.parseColor(color);
+//
+//    }
 
     private void showDialog(String title,String positiveButtonText,String negativeButtonText,String getAndSaveStrKey,String unsuitableToast,String REGEX){
         editText = new EditText(this);
@@ -90,17 +114,17 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         iPInputDialog.setTitle(title).setView(editText);
         iPInputDialog.setPositiveButton(positiveButtonText,(dialog, which) -> {
             if (REGEX.length() != 0){
-                String input = editText.getText().toString();
-                boolean isLegal = Pattern.matches(REGEX,input);
+                boolean isLegal = Pattern.matches(REGEX,editText.getText().toString());
                 if (isLegal){
-                    saveStr(getAndSaveStrKey,input);
+                    colorInput = editText.getText().toString();
+                    saveStr(getAndSaveStrKey, colorInput);
                 }else{
                     Toast.makeText(SettingActivity.this,unsuitableToast,Toast.LENGTH_SHORT).show();
-                    Log.d("inputEd",input);
                 }
             }else{
                 saveStr(getAndSaveStrKey,editText.getText().toString());
             }
+            //
         });
         iPInputDialog.setNegativeButton(negativeButtonText, (dialog, which) -> {  });
         AlertDialog dialog = iPInputDialog.create();
@@ -108,49 +132,11 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         getStr(getAndSaveStrKey);
     }
 
-    private void showIpAddressEnterDialog() {
-        editText = new EditText(SettingActivity.this);
-        AlertDialog.Builder iPInputDialog = new AlertDialog.Builder(SettingActivity.this);
-        iPInputDialog.setTitle("请输入电脑的IP地址").setView(editText);
-        iPInputDialog.setPositiveButton("确定",(dialog, which) -> {
-            String ip = "^((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.){3}(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])$";
-            String input = editText.getText().toString();
-            boolean isLegal = Pattern.matches(ip,input);
-            if (isLegal){
-                saveStr("ipAddress",input);
-            }else{
-                Toast.makeText(SettingActivity.this,"请输入正确的ip地址",Toast.LENGTH_SHORT).show();
-            }
-        });
-        iPInputDialog.setNegativeButton("取消", (dialog, which) -> { return; });
-
-    }
-
-    private void showPasswordEnterDialog() {
-        editText = new EditText(SettingActivity.this);
-        AlertDialog.Builder inputDialog = new AlertDialog.Builder(SettingActivity.this);
-        inputDialog.setTitle("请输入密码").setView(editText);
-        inputDialog.setPositiveButton("确定", (dialog, which) -> {
-            if (editText.getText().toString().length() != 0){
-                saveStr("pwd",editText.getText().toString());
-            }else{
-                Toast.makeText(SettingActivity.this,"密码为空！",Toast.LENGTH_SHORT).show();
-            }
-        });
-        inputDialog.setNegativeButton("取消", (dialog, which) -> { return; });
-        AlertDialog dialog = inputDialog.create();
-        dialog.show();//展示对话框
-        getStr("pwd");
-
-
-    }
-
     private void getStr(String key) {
         SharedPreferences getPWD = getSharedPreferences(key, MODE_PRIVATE);
         String getPassword = getPWD.getString(key,"");
         editText.setText(getPassword);
     }
-
 
     private void saveStr(String id,String pwd) {
         SharedPreferences password = getSharedPreferences(id, MODE_PRIVATE);
