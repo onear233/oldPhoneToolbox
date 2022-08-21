@@ -124,6 +124,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
             }else{
                 saveStr(getAndSaveStrKey,editText.getText().toString());
             }
+            //
         });
         iPInputDialog.setNegativeButton(negativeButtonText, (dialog, which) -> {  });
         AlertDialog dialog = iPInputDialog.create();
