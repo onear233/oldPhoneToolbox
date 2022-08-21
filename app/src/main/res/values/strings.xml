@@ -2,10 +2,7 @@
     <string name="app_name">OldPhoneToolBox</string>
     <string name="battery_hint">剩余电量:</string>
     <string name="app_settings">应用设置</string>
-    <string name="settings_color_title">背景颜色与字体颜色设置</string>
-    <string name="settings_color_desc">你可以选择你喜欢的颜色。AMOLED屏幕设置背景为纯黑色可以达到省电的效果</string>
-    <string name="settings_password_title">使用密码</string>
-    <string name="settings_password_desc">这可以使你的连接更加安全</string>
     <string name="default_text">拉取信息中</string>
     <string name="not_download">当前并没有任务</string>
+    <string name="help_about">帮助与支持</string>
 </resources>
