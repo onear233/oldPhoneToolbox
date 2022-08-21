@@ -7,7 +7,7 @@ public class SocketConstantConfig {
     public static final int CHANNEL_PORT = 7751;
     //监听端口号
     public static final int LISTEN_PORT = 13256;
-    public static final int DOWNLOAD_PORT = 13257;
+    public static final int DOWNLOAD_PORT = 13760;
     //保持循环
     public static boolean IS_FLAG = true;
     //第一次传递的值长度
