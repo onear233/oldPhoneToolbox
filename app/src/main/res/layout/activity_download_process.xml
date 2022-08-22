@@ -33,7 +33,7 @@
             android:id="@+id/pb_download2"
             style="@style/ProgressBar"
             android:layout_width="250sp"
-            android:layout_height="5sp"
+            android:layout_height="7sp"
             android:layout_centerInParent="true"
             android:max="100"
             android:paddingTop="2sp" />
