@@ -6,18 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
-import com.oldphonetoolbox.onear.toolactivity.download.DownloadProcess;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -50,6 +53,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         socket.setDaemon(true);
         socket.start();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        RelativeLayout main = findViewById(R.id.main_activity);
+        TextClock textClock = findViewById(R.id.text_clock);
+        TextView batteryTextView = findViewById(R.id.battery_remain);
+        TextClock textDate = findViewById(R.id.text_date);
+        //从SharedPreferences中读取配置的颜色
+        SharedPreferences getBackgroundColor = getSharedPreferences("backgroundColor", MODE_PRIVATE);
+        String backgroundColor = getBackgroundColor.getString("backgroundColor","");
+        SharedPreferences getTextColor = getSharedPreferences("textColor", MODE_PRIVATE);
+        String textColor = getTextColor.getString("textColor","");
+        Log.d("Color111",backgroundColor);
+        Log.d("Color111",textColor);
+        if (backgroundColor.length() != 0){
+            main.setBackgroundColor(Color.parseColor(backgroundColor));//设置背景颜色
+        }
+        if (textColor.length() != 0){
+            int textColorInt = Color.parseColor(textColor);
+            textClock.setTextColor(textColorInt);
+            batteryTextView.setTextColor(textColorInt);
+            textDate.setTextColor(textColorInt);
+        }
+
+
+
     }
 
     @Override
@@ -72,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @SuppressLint("SetTextI18n")
     public static void setBattery(int a) {
         batteryValue.setText("目前电量：" + a + "%");
     }
