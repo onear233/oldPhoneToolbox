@@ -1,7 +1,6 @@
 package com.oldphonetoolbox.onear.toolactivity.download;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -44,9 +43,7 @@ public class DownloadProcess extends OPTBActivityCompat {
         downloadName2 = findViewById(R.id.process_download2);
         downloadName3 = findViewById(R.id.process_download3);
         //每秒刷新一次控件
-        new Thread(()->{
-            new PageThread(this).flush();
-        }).start();
+        new Thread(()-> new PageThread(this).flush()).start();
     }
     @Override
     public void close() {

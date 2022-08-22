@@ -5,13 +5,10 @@ import android.util.Log;
 
 import com.oldphonetoolbox.onear.MainActivity;
 
-import org.jsoup.Jsoup;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DownloaderThread implements Runnable {
@@ -26,7 +23,6 @@ public class DownloaderThread implements Runnable {
     }
     @Override
     public void run() {
-        Log.i("DOWNLOAD", "开始下载 链接"+url);
         //进行占位并获取索引
         int pointer = -1;
         for(int i = 0;i<3;i++){
@@ -39,8 +35,8 @@ public class DownloaderThread implements Runnable {
         }
         Log.i("DOWNLOAD", "占位成功");
 
-        URL u = null;
-        HttpURLConnection conn = null;
+        URL u;
+        HttpURLConnection conn;
         try {
             u = new URL(url);
             conn = (HttpURLConnection) u.openConnection();
@@ -53,9 +49,10 @@ public class DownloaderThread implements Runnable {
         }
         try(OutputStream out = activity.openFileOutput(name, Context.MODE_PRIVATE);
         InputStream is = conn.getInputStream()){
+            Log.i("DOWNLOAD", "开始下载 链接"+url);
             //设置缓冲区
             byte[] buffer = new byte[1024];
-            int len = 0;
+            int len;
             int total = conn.getContentLength();
             int download = 0;
             System.out.println("total:"+total);
@@ -71,6 +68,7 @@ public class DownloaderThread implements Runnable {
             DownloadProcess.name[pointer] = "";
             DownloadProcess.progress[pointer] = 0;
             DownloadTransportThread.transportations.put(name,name);
+            Log.i("DOWNLOAD", "数据清除完毕");
         }catch (Exception e){
             e.printStackTrace();
         }

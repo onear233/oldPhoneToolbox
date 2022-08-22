@@ -1,8 +1,6 @@
 package com.oldphonetoolbox.onear.toolactivity.monitor;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
+import android.util.Log;
 
 import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
 import com.oldphonetoolbox.onear.data.pojo.WindowsBean;
@@ -24,7 +22,6 @@ public class MonitorThread implements Runnable{
     public void run() {
         try {
             isRunning = true;
-            System.out.println("执行线程");
             activity.serverSocketChannel = ServerSocketChannel.open();
             activity.serverSocketChannel.socket().bind(new InetSocketAddress(SocketConstantConfig.LISTEN_PORT));
             SocketChannel accept = activity.serverSocketChannel.accept();
@@ -37,11 +34,11 @@ public class MonitorThread implements Runnable{
                 ByteBuffer buffer = ByteBuffer.allocate(array[0] << 8 | array[1]);
                 accept.read(buffer);
                 byte[] bytes = buffer.array();
-                activity.runOnUiThread(() -> {
-                    activity.setData(WindowsBean.build(new String(bytes)));
-                });
+                Log.i(SocketConstantConfig.SOCKET_TAG, "获取一次数据");
+                activity.runOnUiThread(() -> activity.setData(WindowsBean.build(new String(bytes))));
                 //等待设置
                 if(!(isRunning)){
+                    Log.i(SocketConstantConfig.SOCKET_TAG, "监控数据结束");
                     break;
                 }
             }

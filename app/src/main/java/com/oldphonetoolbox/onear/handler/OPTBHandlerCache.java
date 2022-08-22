@@ -1,9 +1,8 @@
 package com.oldphonetoolbox.onear.handler;
 
-import android.os.Build;
+import android.util.Log;
 
-import androidx.annotation.RequiresApi;
-
+import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketHandlerConfig;
 import com.oldphonetoolbox.onear.handler.download.DownloadHandler;
 import com.oldphonetoolbox.onear.handler.download.SendFileHandler;
@@ -14,7 +13,6 @@ import com.oldphonetoolbox.onear.socket.SocketCoreController;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class OPTBHandlerCache {
     private static final Map<Byte,OPTBHandlerInterface> handlers_map = new HashMap<>();
@@ -35,11 +33,10 @@ public class OPTBHandlerCache {
     public static OPTBHandlerInterface getHandler(byte id){
         OPTBHandlerInterface anInterface = handlers_map.get(id);
         if(anInterface!=null){
+            Log.i(SocketConstantConfig.SOCKET_TAG, "获取到handler:"+anInterface.getClass().getName());
             return anInterface;
         }
+        Log.e(SocketConstantConfig.SOCKET_TAG, "一次错误的id调用 id->"+id);
         return ERROR;
-    }
-    public static OPTBHandlerInterface addHandler(byte id,OPTBHandlerInterface handler){
-        return handlers_map.put(id,handler);
     }
 }

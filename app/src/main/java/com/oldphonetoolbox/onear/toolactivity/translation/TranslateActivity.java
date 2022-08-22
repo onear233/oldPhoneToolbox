@@ -9,8 +9,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.R;
-import com.oldphonetoolbox.onear.net.translate.Translator;
-import com.oldphonetoolbox.onear.socket.SocketCoreController;
 import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
 public class TranslateActivity extends OPTBActivityCompat {
@@ -30,6 +28,7 @@ public class TranslateActivity extends OPTBActivityCompat {
         TextView eng_view = setLight(findViewById(R.id.ts_en));
         chn_view = setLight(findViewById(R.id.ts_ch));
         eng_view.setText(source);
+        Log.i(TranslateActivity.class.getName(), "进入翻译界面");
         //执行翻译程序
         new Thread(new TranslatorThread(this,source)).start();
     }

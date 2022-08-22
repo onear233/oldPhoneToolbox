@@ -1,6 +1,7 @@
 package com.oldphonetoolbox.onear.handler.download;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.oldphonetoolbox.onear.MainActivity;
 import com.oldphonetoolbox.onear.handler.OPTBHandlerAbstract;
@@ -18,6 +19,7 @@ public class DownloadHandler extends OPTBHandlerAbstract {
     protected void executeCode(byte[] data, MainActivity activity) {
         if(data!=null&&data.length!=0){
             String url = new String(data);
+            Log.i(DownloadHandler.class.getName(), "挂载链接："+url);
             executorService.execute(new DownloaderThread(url.substring(url.lastIndexOf("/")+1),url,activity));
         }
         Intent intent = new Intent(activity, DownloadProcess.class);

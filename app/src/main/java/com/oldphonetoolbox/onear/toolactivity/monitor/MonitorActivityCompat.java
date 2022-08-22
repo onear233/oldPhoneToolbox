@@ -8,15 +8,12 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oldphonetoolbox.onear.R;
 import com.oldphonetoolbox.onear.data.pojo.WindowsBean;
 import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
-import java.io.IOException;
 import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
 
 public class MonitorActivityCompat extends OPTBActivityCompat {
     TextView title;
@@ -38,6 +35,7 @@ public class MonitorActivityCompat extends OPTBActivityCompat {
         cpuUsageAndCount = setLight(findViewById(R.id.cpu_usage_count));
         memoryUsageAndTotal = setLight(findViewById(R.id.memory_usage_total));
         processNum = setLight(findViewById(R.id.process_num));
+        Log.i(MonitorActivityCompat.class.getName(), "进入监控界面等待数据");
         new Thread(new MonitorThread(this)).start();
     }
 

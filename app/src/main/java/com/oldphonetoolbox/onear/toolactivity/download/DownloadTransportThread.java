@@ -1,10 +1,6 @@
 package com.oldphonetoolbox.onear.toolactivity.download;
 
-import android.content.Context;
-import android.os.Build;
 import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import com.oldphonetoolbox.onear.MainActivity;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
@@ -32,7 +28,7 @@ public class DownloadTransportThread implements Runnable{
         Map<String,String> willTransportations;
         willTransportations = transportations;
         transportations = new HashMap<>();
-        System.out.println(toIp);
+        Log.i(DownloadTransportThread.class.getName(), "传输数据获取成功");
         //创建通道
         try (SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress(toIp, SocketConstantConfig.DOWNLOAD_PORT))) {
             //传输数量
@@ -42,9 +38,11 @@ public class DownloadTransportThread implements Runnable{
         }catch (Exception e){
             e.printStackTrace();
         }
+        Log.i(DownloadTransportThread.class.getName(), "准备开始传输文件");
         for (Map.Entry<String, String> entry : willTransportations.entrySet()) {
             transport(entry.getKey(),entry.getValue());
         }
+        Log.i(DownloadTransportThread.class.getName(), "所有文件传输成功");
     }
     private void transport(String name,String url){
         //建立输入流

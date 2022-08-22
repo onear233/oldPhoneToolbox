@@ -1,7 +1,5 @@
 package com.oldphonetoolbox.onear.data.constant.socket;
 
-import java.nio.ByteBuffer;
-
 public class SocketConstantConfig {
     //nio端口号
     public static final int CHANNEL_PORT = 7751;
@@ -19,7 +17,4 @@ public class SocketConstantConfig {
 
     //TAG
     public static final String SOCKET_TAG = "网络通讯";
-
-    //表示byteBuffer
-    public static final ByteBuffer BYTE_BUFFER = ByteBuffer.allocate(1);
 }

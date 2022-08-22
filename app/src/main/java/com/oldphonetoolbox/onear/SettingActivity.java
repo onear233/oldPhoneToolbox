@@ -5,10 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,8 +16,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,9 +49,10 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_setting);
         showListview(settingTitleArray,settingDescriptionArray,"title","desc",R.id.setting_item_tittle,R.id.setting_item_desc,R.id.lv_settings);
         showListview(helpTitleArray,helpDescriptionArray,"helpTitle","helpDesc",R.id.setting_item_tittle,R.id.setting_item_desc,R.id.lv_help);
+        Log.i(SettingActivity.class.getName(), "进入设置界面");
     }
 
-    private void showListview(String titleArray[],String descArray[],String title,String description,int idT,int idD,int listViewId) { //idT为条目布局
+    private void showListview(String[] titleArray, String[] descArray, String title, String description, int idT, int idD, int listViewId) { //idT为条目布局
         list = new ArrayList<>();
         for (int i = 0; i < titleArray.length; i++) {
             item = new HashMap<>();
@@ -103,10 +98,10 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         }
     }
 
-//    private void setTextColor(String color) {
-//        int color1 = Color.parseColor(color);
-//
-//    }
+/*    private void setTextColor(String color) {
+        int color1 = Color.parseColor(color);
+
+    }*/
 
     private void showDialog(String title,String positiveButtonText,String negativeButtonText,String getAndSaveStrKey,String unsuitableToast,String REGEX){
         editText = new EditText(this);
@@ -142,6 +137,6 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         SharedPreferences password = getSharedPreferences(id, MODE_PRIVATE);
         SharedPreferences.Editor editor = password.edit();
         editor.putString(id,pwd);
-        editor.commit();
+        editor.apply();
     }
 }

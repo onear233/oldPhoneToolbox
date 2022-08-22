@@ -21,8 +21,7 @@ public class TranslatorThread implements Runnable{
             Log.e("translate", "翻译失败，错误信息:"+e.getMessage());
         }
         String finalEn = en;
-        activity.runOnUiThread(()->{
-            activity.setText(finalEn);
-        });
+        Log.i(TranslateActivity.class.getName(), "翻译成功，结果为:"+en);
+        activity.runOnUiThread(()->activity.setText(finalEn));
     }
 }

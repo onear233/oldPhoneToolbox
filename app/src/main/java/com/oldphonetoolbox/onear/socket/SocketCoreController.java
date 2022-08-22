@@ -33,6 +33,7 @@ public class SocketCoreController {
             //等待连接
             activity.runOnUiThread(()->{
                 //获取本机局域网ip地址
+                Log.i(SocketConstantConfig.SOCKET_TAG, "本机ip地址：" + s);
                 Toast.makeText(activity, "ip地址:"+s, Toast.LENGTH_LONG).show();
             });
             Log.i(SocketConstantConfig.SOCKET_TAG, "等待连接中");
@@ -53,6 +54,7 @@ public class SocketCoreController {
                 optbActivityCompat.back();
                 optbActivityCompat = null;
             }
+            Log.i(SocketConstantConfig.SOCKET_TAG, "接收到数据,数据为:"+array[0]+","+array[1]+","+array[2]);
             OPTBHandlerCache.getHandler(array[2]).execute(getMetaDataBytes(byteBuffer),activity);
         }
     }
