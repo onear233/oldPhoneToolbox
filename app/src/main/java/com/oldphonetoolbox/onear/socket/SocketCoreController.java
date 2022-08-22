@@ -48,7 +48,7 @@ public class SocketCoreController {
             socketChannel.read(metaData);
             byte[] array = getMetaDataBytes(metaData);
             //获取携带数据长度
-            ByteBuffer byteBuffer = ByteBuffer.allocate(array[0] << 8 | array[1]);
+            ByteBuffer byteBuffer = ByteBuffer.allocate((array[0] & 0xFF) << 8 | (array[1] & 0xFF));
             socketChannel.read(byteBuffer);
             if(optbActivityCompat!=null){
                 optbActivityCompat.back();
