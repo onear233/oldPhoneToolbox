@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String backgroundColor = getBackgroundColor.getString("backgroundColor","");
         SharedPreferences getTextColor = getSharedPreferences("textColor", MODE_PRIVATE);
         String textColor = getTextColor.getString("textColor","");
-        Log.d("Color111",backgroundColor);
-        Log.d("Color111",textColor);
         if (backgroundColor.length() != 0){
             main.setBackgroundColor(Color.parseColor(backgroundColor));//设置背景颜色
         }

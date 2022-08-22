@@ -29,29 +29,28 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
     private final String[] settingDescriptionArray = {constant.settingsBackgroundColorDesc,constant.settingsTextColorDesc,constant.settingsPasswordDesc,constant.settingsIpAddressDesc};
     private final String[] helpTitleArray = {constant.helpAndAboutTitle};
     private final String[] helpDescriptionArray = {constant.helpAndAboutDesc};
-    private List<Map<String, Object>> list;
-    private HashMap<String, Object> item;
     private EditText editText;
-    private final String REGEX_COLOR = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
     private String colorInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        //调用showListView，传入标题、描述、条目布局等
         showListview(settingTitleArray,settingDescriptionArray,"title","desc",R.id.setting_item_tittle,R.id.setting_item_desc,R.id.lv_settings);
         showListview(helpTitleArray,helpDescriptionArray,"helpTitle","helpDesc",R.id.setting_item_tittle,R.id.setting_item_desc,R.id.lv_help);
     }
 
-    private void showListview(String titleArray[],String descArray[],String title,String description,int idT,int idD,int listViewId) { //idT为条目布局
-        list = new ArrayList<>();
+    private void showListview(String[] titleArray, String[] descArray, String title, String description, int idT, int idD, int listViewId) { //idT为条目布局
+        List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < titleArray.length; i++) {
-            item = new HashMap<>();
+            HashMap<String, Object> item = new HashMap<>();
             item.put(title,titleArray[i]);
             item.put(description,descArray[i]);
             list.add(item);
         }
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, list,R.layout.simple_list_item_tv_only,new String[]{title,description},new int[]{idT,idD});
+        //判断是哪个ListView
         if (listViewId == R.id.lv_settings){
             ListView settingListView = findViewById(listViewId);
             settingListView.setAdapter(simpleAdapter);
@@ -67,17 +66,19 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        if (parent.getId() == R.id.lv_help){ //判断是哪个Listview
+        //判断是哪个Listview
+        if (parent.getId() == R.id.lv_help){
+            //因为Lv_help只有一个项目，所以直接跳转
             Intent intent = new Intent(this,HelpActivity.class);
             startActivity(intent);
         }else if(parent.getId() == R.id.lv_settings){
+            String REGEX_COLOR = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";//定义校验颜色的正则表达式
             switch (position){
                 case 0:
-                    showDialog("请输入文字颜色的16进制码（6位带#）", "backgroundColor","此颜色不正确！",REGEX_COLOR);
+                    showDialog("请输入文字颜色的16进制码（6位带#）", "backgroundColor","此颜色不正确！", REGEX_COLOR);
                     break;
                 case 1:
-                    showDialog("请输入文字颜色的16进制码（6位带#）", "textColor","此颜色不正确！",REGEX_COLOR);//显示对话框的方法
+                    showDialog("请输入文字颜色的16进制码（6位带#）", "textColor","此颜色不正确！", REGEX_COLOR);//显示对话框的方法
                     break;
                 case 2:
                     showDialog("请输入密码", "pwd","","");
