@@ -2,7 +2,6 @@ package com.oldphonetoolbox.onear.toolactivity.monitor;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
