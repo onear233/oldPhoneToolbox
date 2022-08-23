@@ -2,7 +2,6 @@ package com.oldphonetoolbox.onear.toolactivity.monitor;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -31,10 +30,10 @@ public class MonitorActivityCompat extends OPTBActivityCompat {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main_connected);
-        title = setLight(findViewById(R.id.window_title));
-        cpuUsageAndCount = setLight(findViewById(R.id.cpu_usage_count));
-        memoryUsageAndTotal = setLight(findViewById(R.id.memory_usage_total));
-        processNum = setLight(findViewById(R.id.process_num));
+        title = (findViewById(R.id.window_title));
+        cpuUsageAndCount = (findViewById(R.id.cpu_usage_count));
+        memoryUsageAndTotal = (findViewById(R.id.memory_usage_total));
+        processNum = (findViewById(R.id.process_num));
         Log.i(MonitorActivityCompat.class.getName(), "进入监控界面等待数据");
         new Thread(new MonitorThread(this)).start();
     }
@@ -50,10 +49,5 @@ public class MonitorActivityCompat extends OPTBActivityCompat {
     @Override
     public void close() {
         MonitorThread.isRunning = false;
-    }
-    private TextView setLight(TextView textView) {
-        //设置荧光效果
-        textView.setShadowLayer(30,0,0, Color.WHITE);
-        return textView;
     }
 }

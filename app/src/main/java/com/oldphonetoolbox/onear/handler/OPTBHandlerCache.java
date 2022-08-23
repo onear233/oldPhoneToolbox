@@ -33,7 +33,7 @@ public class OPTBHandlerCache {
     public static OPTBHandlerInterface getHandler(byte id){
         OPTBHandlerInterface anInterface = handlers_map.get(id);
         if(anInterface!=null){
-            Log.i(SocketConstantConfig.SOCKET_TAG, "获取到handler:"+anInterface.getClass().getName());
+            Log.i(SocketConstantConfig.SOCKET_TAG, "获取到handler");
             return anInterface;
         }
         Log.e(SocketConstantConfig.SOCKET_TAG, "一次错误的id调用 id->"+id);

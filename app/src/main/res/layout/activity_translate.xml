@@ -15,7 +15,7 @@
         android:id="@+id/ts_en"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="15sp"
         android:textColor="@color/white"
         android:layout_below="@id/ts_ch"
         android:layout_centerInParent="true"/>
