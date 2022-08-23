@@ -39,6 +39,7 @@ public class SettingActivity extends AppCompatActivity implements AdapterView.On
         //调用showListView，传入标题、描述、条目布局等
         showListview(settingTitleArray,settingDescriptionArray,"title","desc",R.id.setting_item_tittle,R.id.setting_item_desc,R.id.lv_settings);
         showListview(helpTitleArray,helpDescriptionArray,"helpTitle","helpDesc",R.id.setting_item_tittle,R.id.setting_item_desc,R.id.lv_help);
+        Log.i(SettingActivity.class.getName(), "进入设置界面");
     }
 
     private void showListview(String[] titleArray, String[] descArray, String title, String description, int idT, int idD, int listViewId) { //idT为条目布局

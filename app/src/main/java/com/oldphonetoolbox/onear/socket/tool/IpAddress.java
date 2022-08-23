@@ -13,7 +13,7 @@ public class IpAddress {
     public static String getIpAddress() {
         try {
             Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
-            InetAddress ip = null;
+            InetAddress ip;
             while (allNetInterfaces.hasMoreElements()) {
                 NetworkInterface netInterface = allNetInterfaces.nextElement();
                 if (netInterface.isLoopback() || netInterface.isVirtual() || !netInterface.isUp()) {
@@ -31,7 +31,7 @@ public class IpAddress {
                 }
             }
         } catch (Exception e) {
-            Log.e(SocketConstantConfig.SOCKET_TAG,"IP地址获取失败" + e.toString());
+            Log.e(SocketConstantConfig.SOCKET_TAG,"IP地址获取失败" + e.getMessage());
         }
         return "";
     }

@@ -1,7 +1,6 @@
 package com.oldphonetoolbox.onear.toolactivity.translation;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -9,8 +8,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.R;
-import com.oldphonetoolbox.onear.net.translate.Translator;
-import com.oldphonetoolbox.onear.socket.SocketCoreController;
 import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
 public class TranslateActivity extends OPTBActivityCompat {
@@ -27,9 +24,10 @@ public class TranslateActivity extends OPTBActivityCompat {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_translate);
-        TextView eng_view = setLight(findViewById(R.id.ts_en));
-        chn_view = setLight(findViewById(R.id.ts_ch));
+        TextView eng_view = findViewById(R.id.ts_en);
+        chn_view = findViewById(R.id.ts_ch);
         eng_view.setText(source);
+        Log.i(TranslateActivity.class.getName(), "进入翻译界面");
         //执行翻译程序
         new Thread(new TranslatorThread(this,source)).start();
     }
@@ -38,11 +36,6 @@ public class TranslateActivity extends OPTBActivityCompat {
     public void close() {
     }
 
-    private TextView setLight(TextView textView) {
-        //设置荧光效果
-        textView.setShadowLayer(30,0,0, Color.WHITE);
-        return textView;
-    }
     public void setText(String text){
         this.chn_view.setText(text);
     }

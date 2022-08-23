@@ -1,11 +1,11 @@
 package com.oldphonetoolbox.onear.handler;
 
-import android.os.Build;
+import android.util.Log;
 
-import androidx.annotation.RequiresApi;
-
+import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketHandlerConfig;
 import com.oldphonetoolbox.onear.handler.download.DownloadHandler;
+import com.oldphonetoolbox.onear.handler.download.SendFileHandler;
 import com.oldphonetoolbox.onear.handler.error.OPTBErrorHandler;
 import com.oldphonetoolbox.onear.handler.monitor.MonitorHandler;
 import com.oldphonetoolbox.onear.handler.translation.TranslationExecutor;
@@ -13,7 +13,6 @@ import com.oldphonetoolbox.onear.socket.SocketCoreController;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class OPTBHandlerCache {
     private static final Map<Byte,OPTBHandlerInterface> handlers_map = new HashMap<>();
@@ -29,12 +28,15 @@ public class OPTBHandlerCache {
         });
         handlers_map.put(SocketHandlerConfig.MONITOR.getId(),new MonitorHandler());
         handlers_map.put(SocketHandlerConfig.DOWNLOAD.getId(),new DownloadHandler());
+        handlers_map.put(SocketHandlerConfig.TRANSPORT.getId(), new SendFileHandler());
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static OPTBHandlerInterface getHandler(byte id){
-        return Optional.ofNullable(handlers_map.get(id)).orElse(ERROR);
-    }
-    public static OPTBHandlerInterface addHandler(byte id,OPTBHandlerInterface handler){
-        return handlers_map.put(id,handler);
+        OPTBHandlerInterface anInterface = handlers_map.get(id);
+        if(anInterface!=null){
+            Log.i(SocketConstantConfig.SOCKET_TAG, "获取到handler");
+            return anInterface;
+        }
+        Log.e(SocketConstantConfig.SOCKET_TAG, "一次错误的id调用 id->"+id);
+        return ERROR;
     }
 }

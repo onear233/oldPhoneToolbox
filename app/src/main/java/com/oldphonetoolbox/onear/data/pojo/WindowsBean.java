@@ -1,5 +1,7 @@
 package com.oldphonetoolbox.onear.data.pojo;
 
+import androidx.annotation.NonNull;
+
 public class WindowsBean {
     private String windowTitle;
     private String cpuUsage;
@@ -9,6 +11,7 @@ public class WindowsBean {
     private String numberOfProcesses;
 
 
+    @NonNull
     @Override
     public String toString() {
         return windowTitle + "," + cpuUsage + "," + cpuCount + "," + memoryUsage + "," + memoryTotal+ "," + numberOfProcesses;

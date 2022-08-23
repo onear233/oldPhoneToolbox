@@ -12,7 +12,7 @@ public class TranslationExecutor extends OPTBHandlerAbstract {
     @Override
     protected void executeCode(byte[] data, MainActivity activity ) {
         String in = new String(data);
-        Log.e(SocketConstantConfig.SOCKET_TAG, in );
+        Log.i(SocketConstantConfig.SOCKET_TAG, in );
         Intent intent = new Intent(activity, TranslateActivity.class);
         //将英文in传过去
         intent.putExtra("english", in);

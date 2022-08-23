@@ -16,7 +16,7 @@ public class Translator {
         return parseResult(text);
     }
 
-    private static String parseResult(String inputJson) throws Exception {
+    private static String parseResult(String inputJson) {
         return inputJson.substring(inputJson.indexOf("[[[\"")+4,inputJson.indexOf("\",\""));
     }
 }

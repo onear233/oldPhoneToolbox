@@ -1,6 +1,5 @@
 package com.oldphonetoolbox.onear;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -29,7 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static TextView batteryValue;
     private BatteryReceiver batteryReceiver;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //设置应用横屏并全屏显示
@@ -42,9 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         batteryValue = findViewById(R.id.battery_remain);
         findViewById(R.id.btn_setting).setOnClickListener(this);
+        Log.i(TAG, "主界面初始化成功");
         //开辟一个新线程
         Thread socket = new Thread(() -> {
             try {
+                Log.i(TAG, "开启网络通信线程");
                 new SocketCoreController().starter(this);
             } catch (Exception e) {
                 Log.e("Socket", "网络通信: " + e.getMessage());
@@ -102,9 +104,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         unregisterReceiver(batteryReceiver);
     }
 
-
     @SuppressLint("SetTextI18n")
     public static void setBattery(int a) {
+        Log.i(TAG, "setBattery: 当前电量为");
         batteryValue.setText("目前电量：" + a + "%");
     }
 
