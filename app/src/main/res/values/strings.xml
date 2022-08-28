@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OldPhoneToolBox</string>
+    <string name="battery_hint">剩余电量:</string>
+    <string name="app_settings">应用设置</string>
+    <string name="default_text">拉取信息中</string>
+    <string name="not_download">当前并没有任务</string>
+    <string name="help_about">帮助与支持</string>
+</resources>

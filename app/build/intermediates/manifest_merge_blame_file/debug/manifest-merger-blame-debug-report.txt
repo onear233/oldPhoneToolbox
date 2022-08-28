@@ -1,0 +1,121 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.oldphonetoolbox.onear"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="17"
+8-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml
+10    <!-- 允许访问wifi状态的权限 -->
+11    <!-- 允许应用程序改变网络状态 -->
+12    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许应用程序改变WIFI连接状态 -->
+12-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:7:5-79
+12-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:7:22-76
+13    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许应用程序访问有关的网络信息 -->
+13-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:8:5-76
+13-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:8:22-73
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许应用程序访问WIFI网卡的网络信息 -->
+14-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:9:5-79
+14-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:9:22-76
+15    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许应用程序完全使用网络 -->
+15-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:10:5-76
+15-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:10:22-73
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:11:5-67
+16-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:11:22-64
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:12:5-68
+17-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:12:22-65
+18    <!-- 存储权限 -->
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:14:5-15:40
+19-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:14:22-78
+20    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+20-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:16:5-80
+20-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:16:22-77
+21
+22    <application
+22-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:18:5-56:19
+23        android:allowBackup="true"
+23-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:20:9-35
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.5.0] C:\Users\onear\.gradle\caches\transforms-3\0087d386995d333b3d4f80b6c785336f\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+25        android:debuggable="true"
+26        android:icon="@mipmap/ic_launcher"
+26-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:21:9-43
+27        android:label="@string/app_name"
+27-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:22:9-41
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:23:9-54
+29        android:screenOrientation="landscape"
+29-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:19:9-46
+30        android:supportsRtl="true"
+30-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:24:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.OldPhoneToolBox" >
+32-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:25:9-53
+33        <activity
+33-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:26:9-29:40
+34            android:name="com.oldphonetoolbox.onear.toolactivity.download.DownloadProcess"
+34-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:27:13-66
+35            android:exported="false"
+35-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:29:13-37
+36            android:screenOrientation="landscape" />
+36-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:28:13-50
+37        <activity
+37-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:30:9-33:40
+38            android:name="com.oldphonetoolbox.onear.toolactivity.translation.TranslateActivity"
+38-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:31:13-71
+39            android:exported="false"
+39-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:33:13-37
+40            android:screenOrientation="landscape" />
+40-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:32:13-50
+41        <activity
+41-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:34:9-37:40
+42            android:name="com.oldphonetoolbox.onear.HelpActivity"
+42-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:35:13-41
+43            android:exported="false"
+43-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:37:13-37
+44            android:screenOrientation="landscape" />
+44-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:36:13-50
+45        <activity
+45-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:38:9-41:40
+46            android:name="com.oldphonetoolbox.onear.SettingActivity"
+46-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:39:13-44
+47            android:exported="false"
+47-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:41:13-37
+48            android:screenOrientation="landscape" />
+48-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:40:13-50
+49        <activity
+49-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:42:9-45:40
+50            android:name="com.oldphonetoolbox.onear.toolactivity.monitor.MonitorActivityCompat"
+50-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:43:13-71
+51            android:exported="false"
+51-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:45:13-37
+52            android:screenOrientation="landscape" />
+52-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:44:13-50
+53        <activity
+53-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:46:9-55:20
+54            android:name="com.oldphonetoolbox.onear.MainActivity"
+54-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:47:13-41
+55            android:exported="true"
+55-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:49:13-36
+56            android:screenOrientation="landscape" >
+56-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:48:13-50
+57            <intent-filter>
+57-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:50:13-54:29
+58                <action android:name="android.intent.action.MAIN" />
+58-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:51:17-69
+58-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:51:25-66
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:53:17-77
+60-->E:\oldPhoneToolBox\app\src\main\AndroidManifest.xml:53:27-74
+61            </intent-filter>
+62        </activity>
+63    </application>
+64
+65</manifest>
