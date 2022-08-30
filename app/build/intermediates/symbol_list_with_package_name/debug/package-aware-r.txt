@@ -1984,6 +1984,7 @@ id memory_usage_total
 id message
 id middle
 id mini
+id monitor_activity_main
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -2172,6 +2173,7 @@ id transitionToEnd
 id transitionToStart
 id transition_current_scene
 id transition_layout_save
+id transition_main
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform

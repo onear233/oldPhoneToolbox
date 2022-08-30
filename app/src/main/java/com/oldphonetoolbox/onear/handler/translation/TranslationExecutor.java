@@ -3,11 +3,13 @@ package com.oldphonetoolbox.onear.handler.translation;
 import android.content.Intent;
 import android.util.Log;
 
+import com.oldphonetoolbox.frame.annotation.Handler;
 import com.oldphonetoolbox.onear.MainActivity;
 import com.oldphonetoolbox.onear.data.constant.socket.SocketConstantConfig;
 import com.oldphonetoolbox.onear.handler.OPTBHandlerAbstract;
 import com.oldphonetoolbox.onear.toolactivity.translation.TranslateActivity;
 
+@Handler(0x00)
 public class TranslationExecutor extends OPTBHandlerAbstract {
     @Override
     protected void executeCode(byte[] data, MainActivity activity ) {

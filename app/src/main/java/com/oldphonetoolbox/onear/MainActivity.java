@@ -1,5 +1,6 @@
 package com.oldphonetoolbox.onear;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,6 +9,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +19,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
 
+import com.oldphonetoolbox.frame.annotation.HandlerScan;
+import com.oldphonetoolbox.frame.annotation.ScanParser;
 import com.oldphonetoolbox.onear.receiver.BatteryReceiver;
 import com.oldphonetoolbox.onear.socket.SocketCoreController;
 import com.oldphonetoolbox.onear.toolactivity.download.DownloadProcess;
 
+import java.lang.reflect.InvocationTargetException;
+
+@HandlerScan("com.oldphonetoolbox.onear.handler")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -30,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String TAG = "MainActivity";
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //设置应用横屏并全屏显示
@@ -39,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        //解析功能配置
+        try {
+            ScanParser.parseConfig(MainActivity.class,this);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_main);
         batteryValue = findViewById(R.id.battery_remain);
         findViewById(R.id.btn_setting).setOnClickListener(this);

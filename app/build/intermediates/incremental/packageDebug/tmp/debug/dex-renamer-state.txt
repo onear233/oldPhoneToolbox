@@ -1,4 +1,4 @@
-#Wed Aug 24 18:31:52 CST 2022
-base.0=E\:\\oldPhoneToolBox\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
+#Wed Aug 31 07:28:35 HKT 2022
+base.0=E\:\\workplace\\android\\OldPhoneToolBox\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
+renamed.0=classes.dex

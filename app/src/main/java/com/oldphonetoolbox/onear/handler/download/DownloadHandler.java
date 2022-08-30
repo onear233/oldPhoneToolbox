@@ -3,6 +3,7 @@ package com.oldphonetoolbox.onear.handler.download;
 import android.content.Intent;
 import android.util.Log;
 
+import com.oldphonetoolbox.frame.annotation.Handler;
 import com.oldphonetoolbox.onear.MainActivity;
 import com.oldphonetoolbox.onear.handler.OPTBHandlerAbstract;
 import com.oldphonetoolbox.onear.toolactivity.download.DownloadProcess;
@@ -11,6 +12,7 @@ import com.oldphonetoolbox.onear.toolactivity.download.DownloaderThread;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@Handler(0x03)
 public class DownloadHandler extends OPTBHandlerAbstract {
     //线程池
     public static final ExecutorService executorService = Executors.newFixedThreadPool(3);

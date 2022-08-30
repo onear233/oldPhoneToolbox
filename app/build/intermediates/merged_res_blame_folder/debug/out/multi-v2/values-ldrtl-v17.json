@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\oldPhoneToolBox\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+            "outputFile": "E:\\workplace\\android\\OldPhoneToolBox\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldrtl-v17\\values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onear\\.gradle\\caches\\transforms-3\\17e02455d923397fda05bd250e90a1c5\\transformed\\material-1.4.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\seeas\\.gradle\\caches\\transforms-3\\17e02455d923397fda05bd250e90a1c5\\transformed\\material-1.4.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\oldPhoneToolBox\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
+            "outputFile": "E:\\workplace\\android\\OldPhoneToolBox\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onear\\.gradle\\caches\\transforms-3\\17e02455d923397fda05bd250e90a1c5\\transformed\\material-1.4.0\\res\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
+                    "source": "C:\\Users\\seeas\\.gradle\\caches\\transforms-3\\17e02455d923397fda05bd250e90a1c5\\transformed\\material-1.4.0\\res\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

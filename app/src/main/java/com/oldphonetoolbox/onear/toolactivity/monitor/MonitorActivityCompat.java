@@ -1,22 +1,15 @@
 package com.oldphonetoolbox.onear.toolactivity.monitor;
 
 import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.oldphonetoolbox.onear.R;
 import com.oldphonetoolbox.onear.data.pojo.WindowsBean;
 import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
-
-import org.w3c.dom.Text;
 
 import java.nio.channels.ServerSocketChannel;
 import java.util.LinkedList;

@@ -25,6 +25,7 @@ id lv_help
 id lv_settings
 id main_activity
 id memory_usage_total
+id monitor_activity_main
 id pb_download1
 id pb_download2
 id pb_download3
@@ -39,6 +40,7 @@ id setting_item_tittle
 id setting_main
 id text_clock
 id text_date
+id transition_main
 id ts_ch
 id ts_en
 id window_title
