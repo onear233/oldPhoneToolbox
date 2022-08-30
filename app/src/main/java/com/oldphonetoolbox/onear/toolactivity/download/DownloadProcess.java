@@ -89,6 +89,7 @@ public class DownloadProcess extends OPTBActivityCompat {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    
                 }
             }
         }
