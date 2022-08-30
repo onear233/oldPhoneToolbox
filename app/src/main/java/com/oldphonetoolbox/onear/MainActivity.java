@@ -56,10 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         socket.setDaemon(true);
         socket.start();
 
-        Intent intent = new Intent(this, DownloadProcess.class);
-        startActivity(intent);
-
-
     }
 
     @Override

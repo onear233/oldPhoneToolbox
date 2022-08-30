@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.oldphonetoolbox.onear.R;
 import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class DownloadProcess extends OPTBActivityCompat {
@@ -30,10 +32,6 @@ public class DownloadProcess extends OPTBActivityCompat {
     public TextView downloadName3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_download_process);
@@ -49,27 +47,19 @@ public class DownloadProcess extends OPTBActivityCompat {
         new Thread(()-> new PageThread(this).flush()).start();
     }
 
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        //从SharedPreferences中读取配置的颜色
-        SharedPreferences getBackgroundColor = getSharedPreferences("backgroundColor", MODE_PRIVATE);
-        String backgroundColor = getBackgroundColor.getString("backgroundColor","");
-        SharedPreferences getTextColor = getSharedPreferences("textColor", MODE_PRIVATE);
-        String textColor = getTextColor.getString("textColor","");
-        if (backgroundColor.length() != 0){
-            RelativeLayout downMain = findViewById(R.id.download_process_main);
-            downMain.setBackgroundColor(Color.parseColor(backgroundColor));//设置背景颜色
-        }
-        if (textColor.length() != 0){
-            TextView processDownload1 = findViewById(R.id.process_download1);
-            TextView processDownload2 = findViewById(R.id.process_download2);
-            TextView processDownload3 = findViewById(R.id.process_download3);
-            int textColorInt = Color.parseColor(textColor);
-            processDownload1.setTextColor(textColorInt);
-            processDownload2.setTextColor(textColorInt);
-            processDownload3.setTextColor(textColorInt);
-        }
+    protected RelativeLayout getMainLayout() {
+        return findViewById(R.id.download_process_main);
+    }
+
+    @Override
+    protected List<TextView> getTextView() {
+        List<TextView> list = new LinkedList<>();
+        list.add(findViewById(R.id.process_download1));
+        list.add(findViewById(R.id.process_download2));
+        list.add(findViewById(R.id.process_download3));
+        return list;
     }
 
     @Override

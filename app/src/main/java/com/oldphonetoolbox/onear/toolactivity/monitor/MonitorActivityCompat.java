@@ -19,6 +19,8 @@ import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 import org.w3c.dom.Text;
 
 import java.nio.channels.ServerSocketChannel;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MonitorActivityCompat extends OPTBActivityCompat {
     TextView title;
@@ -29,10 +31,6 @@ public class MonitorActivityCompat extends OPTBActivityCompat {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main_connected);
@@ -45,28 +43,18 @@ public class MonitorActivityCompat extends OPTBActivityCompat {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        //从SharedPreferences中读取配置的颜色
-        SharedPreferences getBackgroundColor = getSharedPreferences("backgroundColor", MODE_PRIVATE);
-        String backgroundColor = getBackgroundColor.getString("backgroundColor","");
-        SharedPreferences getTextColor = getSharedPreferences("textColor", MODE_PRIVATE);
-        String textColor = getTextColor.getString("textColor","");
-        if (backgroundColor.length() != 0){
-            RelativeLayout main = findViewById(R.id.monitor_activity_main);
-            main.setBackgroundColor(Color.parseColor(backgroundColor));//设置背景颜色
-        }
-        if (textColor.length() != 0){
-            TextView windowTitle = findViewById(R.id.window_title);
-            TextView cpuUsageCount = findViewById(R.id.cpu_usage_count);
-            TextView memoryUsage = findViewById(R.id.memory_usage_total);
-            TextView processNum = findViewById(R.id.process_num);
-            int textColorInt = Color.parseColor(textColor);
-            windowTitle.setTextColor(textColorInt);
-            cpuUsageCount.setTextColor(textColorInt);
-            memoryUsage.setTextColor(textColorInt);
-            processNum.setTextColor(textColorInt);
-        }
+    protected RelativeLayout getMainLayout() {
+        return findViewById(R.id.monitor_activity_main);
+    }
+
+    @Override
+    protected List<TextView> getTextView() {
+        List<TextView> list = new LinkedList<>();
+        list.add(findViewById(R.id.window_title));
+        list.add(findViewById(R.id.cpu_usage_count));
+        list.add(findViewById(R.id.memory_usage_total));
+        list.add(findViewById(R.id.process_num));
+        return list;
     }
 
     @SuppressLint("SetTextI18n")

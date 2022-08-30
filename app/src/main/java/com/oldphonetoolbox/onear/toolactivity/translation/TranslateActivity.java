@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.oldphonetoolbox.onear.R;
 import com.oldphonetoolbox.onear.toolactivity.OPTBActivityCompat;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class TranslateActivity extends OPTBActivityCompat {
 
     private TextView chn_view;
@@ -20,10 +23,6 @@ public class TranslateActivity extends OPTBActivityCompat {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String source = getIntent().getStringExtra("english");
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_translate);
@@ -36,26 +35,18 @@ public class TranslateActivity extends OPTBActivityCompat {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        //从SharedPreferences中读取配置的颜色
-        SharedPreferences getBackgroundColor = getSharedPreferences("backgroundColor", MODE_PRIVATE);
-        String backgroundColor = getBackgroundColor.getString("backgroundColor","");
-        SharedPreferences getTextColor = getSharedPreferences("textColor", MODE_PRIVATE);
-        String textColor = getTextColor.getString("textColor","");
-
-        if (backgroundColor.length() != 0){
-            RelativeLayout main = findViewById(R.id.transition_main);
-            main.setBackgroundColor(Color.parseColor(backgroundColor));//设置背景颜色
-        }
-        if (textColor.length() != 0){
-            TextView zhCn = findViewById(R.id.ts_ch);
-            TextView usEn = findViewById(R.id.ts_en);
-            int textColorInt = Color.parseColor(textColor);
-            zhCn.setTextColor(textColorInt);
-            usEn.setTextColor(textColorInt);
-        }
+    protected RelativeLayout getMainLayout() {
+        return findViewById(R.id.transition_main);
     }
+
+    @Override
+    protected List<TextView> getTextView() {
+        List<TextView> list = new LinkedList<>();
+        list.add(findViewById(R.id.ts_ch));
+        list.add(findViewById(R.id.ts_en));
+        return list;
+    }
+
 
     @Override
     public void close() {
