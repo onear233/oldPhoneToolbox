@@ -31,7 +31,6 @@ public final class ClassesReader {
         while(enumeration.hasMoreElements()){
             String  className = enumeration.nextElement();
             if (className.contains(packageName)) {
-                System.out.println(className);
                 classes.add(Class.forName(className));
             }
         }

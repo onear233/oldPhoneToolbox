@@ -1,6 +1,7 @@
 package com.oldphonetoolbox.frame.annotation;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.oldphonetoolbox.frame.function.classreader.ClassesReader;
 import com.oldphonetoolbox.onear.handler.OPTBHandlerCache;
@@ -13,12 +14,9 @@ import java.util.List;
 public final class ScanParser {
     public static void parseConfig(Class<?> config, Context context) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         //获取路径
-        String path = config.getAnnotation(HandlerScan.class).value();
-        //获取所有的类
-        List<Class<?>> classes = null;
         try {
-            classes = ClassesReader.getClasses(context.getPackageCodePath(),path);
-            for (Class<?> aClass : classes) {
+            //获取所有的类并遍历
+            for (Class<?> aClass : ClassesReader.getClasses(context.getPackageCodePath(),config.getAnnotation(HandlerScan.class).value())) {
                 injectHandler(aClass);
             }
         } catch (ClassNotFoundException|IOException e) {
@@ -32,6 +30,7 @@ public final class ScanParser {
             return;
         }
         byte value = annotation.value();
+        Log.i("数据注入", "id:"+value+"------->handler:"+handler.getName());
         OPTBHandlerCache.setHandler(value, (OPTBHandlerInterface) handler.getDeclaredConstructor().newInstance());
     }
 }
